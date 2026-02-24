@@ -327,16 +327,6 @@ curl -X POST http://localhost:5678/webhook/master-brain \
 
 <div align="center">
 
-## 📈 ACTIVITY
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=marketflow-io&theme=github-dark&bg_color=080A0F&color=C9A84C&line=E8C96D&point=C9A84C&area=true&hide_border=true" width="100%"/>
-
-</div>
-
----
-
-<div align="center">
-
 <!-- WAVE FOOTER -->
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:C9A84C,100:8B6914&height=120&section=footer&text=Market%20Flow%20·%20Think%20·%20Execute%20·%20Scale&fontSize=16&fontColor=080A0F&fontAlignY=65&animation=twinkling" width="100%"/>
 
