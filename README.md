@@ -4,7 +4,7 @@
 <img src="https://capsule-render.vercel.app/api?type=venom&height=300&text=Market%20Flow&fontSize=90&color=0:C9A84C,50:E8C96D,100:8B6914&fontColor=080A0F&stroke=C9A84C&strokeWidth=2&animation=twinkling&fontAlignY=55&desc=AI%20Marketing%20Automation%20Engine&descSize=22&descAlignY=75&descColor=080A0F" width="100%"/>
 
 <!-- TYPING ANIMATION -->
-<a href="https://git.io/typing-svg">
+
   <img src="https://readme-typing-svg.demolab.com?font=Playfair+Display&weight=700&size=28&duration=3000&pause=800&color=C9A84C&center=true&vCenter=true&multiline=false&random=false&width=700&height=60&lines=🧠+Master+Brain+Activated;⚡+n8n+Workflows+Running;🤖+AI+Agents+Deployed;📊+ERPNext+Connected;🚀+Marketing+Automated+24%2F7;💰+ROI+Growing+Autonomously" alt="Typing SVG" />
 </a>
 
