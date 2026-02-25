@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Flow - AI Marketing Automation Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --bg-dark: #0a0a0f;
+            --bg-card: #1a1a24;
+            --bg-card-hover: #232334;
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --border: #2d2d3f;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --gradient-6: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body[dir="ltr"] {
+            font-family: 'Inter', 'Cairo', sans-serif;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--bg-dark);
+            overflow: hidden;
+        }
+
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 90%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+            animation: bgMove 20s ease-in-out infinite;
+        }
+
+        @keyframes bgMove {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-50px, -50px); }
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .lang-toggle {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .lang-toggle:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 2rem 100px;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--primary);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stats Section */
+        .stats {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* Section */
+        .section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* AI Agents Grid */
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .agent-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .agent-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .agent-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .agent-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.3);
+        }
+
+        .agent-card:nth-child(1)::before { background: var(--gradient-1); }
+        .agent-card:nth-child(2)::before { background: var(--gradient-2); }
+        .agent-card:nth-child(3)::before { background: var(--gradient-3); }
+        .agent-card:nth-child(4)::before { background: var(--gradient-4); }
+        .agent-card:nth-child(5)::before { background: var(--gradient-5); }
+        .agent-card:nth-child(6)::before { background: var(--gradient-6); }
+
+        .agent-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .agent-card:nth-child(1) .agent-icon { background: var(--gradient-1); }
+        .agent-card:nth-child(2) .agent-icon { background: var(--gradient-2); }
+        .agent-card:nth-child(3) .agent-icon { background: var(--gradient-3); }
+        .agent-card:nth-child(4) .agent-icon { background: var(--gradient-4); }
+        .agent-card:nth-child(5) .agent-icon { background: var(--gradient-5); }
+        .agent-card:nth-child(6) .agent-icon { background: var(--gradient-6); }
+
+        .agent-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .agent-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .agent-features {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .agent-features li {
+            padding: 0.5rem 0;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .agent-features li i {
+            color: var(--success);
+            font-size: 0.9rem;
+        }
+
+        /* Master Brain Section */
+        .master-brain {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brain-network {
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brain-center {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 0 60px rgba(99, 102, 241, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 60px rgba(99, 102, 241, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 0 80px rgba(99, 102, 241, 0.7); }
+        }
+
+        .brain-center i {
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .brain-center span {
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .brain-nodes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .brain-node {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: var(--bg-card-hover);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .brain-node i {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+            color: var(--primary);
+        }
+
+        .brain-node:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
+        .brain-node:nth-child(2) { top: 10%; right: 15%; animation-delay: 0.5s; }
+        .brain-node:nth-child(3) { top: 50%; left: 5%; animation-delay: 1s; }
+        .brain-node:nth-child(4) { top: 50%; right: 5%; animation-delay: 1.5s; }
+        .brain-node:nth-child(5) { bottom: 10%; left: 20%; animation-delay: 2s; }
+        .brain-node:nth-child(6) { bottom: 10%; right: 20%; animation-delay: 2.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Canvas for connections */
+        #brainCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Integration Section */
+        .integration-showcase {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .integration-content h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .integration-content p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .integration-list {
+            list-style: none;
+        }
+
+        .integration-list li {
+            padding: 1rem;
+            background: var(--bg-dark);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .integration-list li i {
+            color: var(--success);
+            font-size: 1.3rem;
+        }
+
+        .integration-visual {
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .integration-logos {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .logo-item {
+            background: var(--bg-dark);
+            padding: 1.5rem 3rem;
+            border-radius: 15px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .logo-item:hover {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .logo-n8n {
+            color: #ff6d5a;
+        }
+
+        .logo-erpnext {
+            color: #0089ff;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 30px;
+            padding: 5rem 3rem;
+            text-align: center;
+            margin-top: 5rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section .btn {
+            background: white;
+            color: var(--primary);
+        }
+
+        .cta-section .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .agents-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .integration-showcase {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+            }
+
+            .brain-node {
+                width: 80px;
+                height: 80px;
+                font-size: 0.7rem;
+            }
+
+            .brain-center {
+                width: 150px;
+                height: 150px;
+            }
+
+            .brain-center i {
+                font-size: 3rem;
+            }
+        }
+
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <span data-ar="Market Flow" data-en="Market Flow">Market Flow</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+                <li><a href="#agents" data-ar="الوكلاء الذكيين" data-en="AI Agents">الوكلاء الذكيين</a></li>
+                <li><a href="#features" data-ar="المميزات" data-en="Features">المميزات</a></li>
+                <li><a href="#integration" data-ar="التكامل" data-en="Integration">التكامل</a></li>
+                <li><a href="#contact" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a></li>
+            </ul>
+            <div class="lang-toggle" onclick="toggleLanguage()">
+                <i class="fas fa-language"></i>
+                <span id="langText">EN</span>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1 data-ar="نظام تسويق ذكي متكامل" data-en="Complete AI Marketing System">نظام تسويق ذكي متكامل</h1>
+        <p data-ar="بناء قسم تسويق كامل يعمل بالذكاء الاصطناعي - يفكر، ينفذ، يتابع. مدعوم بـ n8n و ERPNext لأتمتة عمليات التسويق بالكامل" 
+           data-en="Build a complete AI-powered marketing department - Think, Execute, Monitor. Powered by n8n & ERPNext for full marketing automation">
+           بناء قسم تسويق كامل يعمل بالذكاء الاصطناعي - يفكر، ينفذ، يتابع. مدعوم بـ n8n و ERPNext لأتمتة عمليات التسويق بالكامل
+        </p>
+        <div class="hero-buttons">
+            <button class="btn btn-primary">
+                <i class="fas fa-rocket"></i>
+                <span data-ar="ابدأ الآن مجاناً" data-en="Start Free Now">ابدأ الآن مجاناً</span>
+            </button>
+            <button class="btn btn-secondary">
+                <i class="fas fa-play-circle"></i>
+                <span data-ar="شاهد العرض التوضيحي" data-en="Watch Demo">شاهد العرض التوضيحي</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stat-card animate-on-scroll">
+            <div class="stat-icon"><i class="fas fa-robot"></i></div>
+            <div class="stat-number" data-ar="6+" data-en="6+">6+</div>
+            <div class="stat-label" data-ar="وكلاء ذكيين متخصصين" data-en="Specialized AI Agents">وكلاء ذكيين متخصصين</div>
+        </div>
+        <div class="stat-card animate-on-scroll">
+            <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+            <div class="stat-number" data-ar="300%" data-en="300%">300%</div>
+            <div class="stat-label" data-ar="زيادة في الإنتاجية" data-en="Increase in Productivity">زيادة في الإنتاجية</div>
+        </div>
+        <div class="stat-card animate-on-scroll">
+            <div class="stat-icon"><i class="fas fa-clock"></i></div>
+            <div class="stat-number" data-ar="24/7" data-en="24/7">24/7</div>
+            <div class="stat-label" data-ar="عمل متواصل بدون توقف" data-en="Continuous Operation">عمل متواصل بدون توقف</div>
+        </div>
+        <div class="stat-card animate-on-scroll">
+            <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+            <div class="stat-number" data-ar="80%" data-en="80%">80%</div>
+            <div class="stat-label" data-ar="توفير في التكاليف" data-en="Cost Savings">توفير في التكاليف</div>
+        </div>
+    </section>
+
+    <!-- AI Agents Section -->
+    <section class="section" id="agents">
+        <div class="section-header">
+            <div class="section-tag" data-ar="الوكلاء الذكيين" data-en="AI Agents">الوكلاء الذكيين</div>
+            <h2 class="section-title" data-ar="فريق التسويق الذكي الكامل" data-en="Complete AI Marketing Team">فريق التسويق الذكي الكامل</h2>
+            <p class="section-description" data-ar="وكلاء ذكيين متخصصين يعملون معاً لإدارة جميع جوانب التسويق الرقمي بذكاء وكفاءة" 
+               data-en="Specialized AI agents working together to manage all aspects of digital marketing intelligently and efficiently">
+               وكلاء ذكيين متخصصين يعملون معاً لإدارة جميع جوانب التسويق الرقمي بذكاء وكفاءة
+            </p>
+        </div>
+
+        <div class="agents-grid">
+            <!-- Agent 1: AI Content Agent -->
+            <div class="agent-card animate-on-scroll">
+                <div class="agent-icon">
+                    <i class="fas fa-pen-fancy"></i>
+                </div>
+                <h3 class="agent-title" data-ar="وكيل المحتوى الذكي" data-en="AI Content Agent">وكيل المحتوى الذكي</h3>
+                <p class="agent-description" data-ar="إنشاء محتوى تسويقي احترافي بالذكاء الاصطناعي لجميع المنصات مع تحليل الأداء وتحسين النتائج" 
+                   data-en="Create professional marketing content with AI for all platforms with performance analysis and optimization">
+                   إنشاء محتوى تسويقي احترافي بالذكاء الاصطناعي لجميع المنصات مع تحليل الأداء وتحسين النتائج
+                </p>
+                <ul class="agent-features">
+                    <li><i class="fas fa-check-circle"></i><span data-ar="كتابة إعلانات ومنشورات" data-en="Ad & Post Writing">كتابة إعلانات ومنشورات</span></li>
+                    <li><i class="fas fa-check-circle"></i><span data-ar="تحليل أداء المحتوى" data-en="Content Performance Analysis">تحليل أداء المحتوى</span></li>
+                    <li><i class="fas fa-check-circle"></i><span data-ar="جدولة تلقائية للنشر" data-en="Auto Scheduling">جدولة تلقائية للنشر</span></li>
+                    <li><i class="fas fa-check-circle"></i><span data-ar="تخصيص حسب الجمهور" data-en="Audience Personalization">تخصيص حسب الجمهور</span></li>
+                </ul>
+            </div>
+
+            <!-- Agent 2: Website Analysis Agent -->
+            <div class="agent-card animate-on-scroll">
+                <div class="agent-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <h3 class="agent-title" data-ar="وكيل تحليل المواقع" data-en="Website Analysis Agent">وكيل تحليل المواقع</h3>
+                <p class="agent-description" data-ar="تحليل شامل للموقع الإلكتروني وصفحات الهبوط مع تقارير الأداء وتوصيات التحسين" 
+                   data-en="Comprehensive website and landing page analysis with performance reports and optimization recommendations">
+                   تحليل شامل للموقع الإلكتروني وصفحات الهبوط مع تقارير الأداء وتوصيات التحسين
+                </p>
+                <ul class="agent-features">
+                    <li><i class="fas fa-check-circle"></i><span data-ar="تحليل سلوك الزوار" data-en="Visitor Behavior Analysis">تحليل سلوك الزوار</span></li>
+                    <li><i class="fas fa-check-circle"></i><span data-ar="اختبار A/B تلقائي" data-en="Auto A/B Testing">اختبار A/B تلقائي</span></li>
+                    <li><i class="fas fa-check-circle"></i><span data-ar="تحسين معدل التحويل" data-en="Conversion Rate Optimization">تحسين معدل التحويل</span></li>
+                    <li><i class="fas fa-check-circle"></i><span data-ar="تقارير أداء فورية" data-en="Real-time Performance Reports">تقارير أداء فورية</span></li>
+                </ul>
+            </div>
+
+            <!-- Agent 3: Social Moderation Agent -->
+            <div class="agent-card animate-on-scroll">
+                <div class="agent-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="agent-title" data-ar="وكيل إدارة السوشيال ميديا" data-en="Social Moderation Agent">وكيل إدارة السوشيال ميديا</h3>
+                <p class="agent-description" data-ar="إدارة ذكية للتفاعلات على وسائل التواصل الاجتماعي مع الرد التلقائي وتحليل المشاعر" 
+                   data-en="Smart management of social media interactions with auto-reply and sentiment analysis">
+                   إدارة ذكية للتفاعلات على وسائل التواصل الاجتماعي مع الرد التلقائي وتحليل المشاعر
+                </p>
+                <ul class="agent-features">
+                    <li><i class="fas fa-check-circle"></i><span data-ar="رد تلقائي ذكي" data-en="Smart Auto-Reply">رد تلقائي ذكي</span></li>
+                    <li><i class="fas fa-check-circle"></i><span data-ar="تحليل المشاعر والآراء" data-en="Sentiment Analysis">تحليل المشاعر والآراء</span></li>
+                    <li><i class="fas fa-check-circle"></i><span data-ar="كشف التعليقات السلبية" data-en="Negative Comment Detection">كشف التعليقات السلبية</span></li>
+                    <li><i class="fas fa-check-circle"></i><span data-ar="إدارة متعددة المنصات" data-en="Multi-Platform Management">إدارة متعددة المنصات</span></li>
+                </ul>
+            </div>
+
+            <!-- Agent 4: SEO Research Agent -->
+            <div class="agent-card animate-on-scroll">
+                <div class="agent-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3 class="agent-title" data-ar="وكيل البحث والسيو" data-en="SEO Research Agent">وكيل البحث والسيو</h3>
+                <p class="agent-description" data-ar="بحث متقدم عن الكلمات المفتاحية وإنشاء خطط محتوى SEO مع تتبع ترتيب الموقع" 
+                   data-en="Advanced keyword research and SEO content planning with ranking tracking">
+                   بحث متقدم عن الكلمات المفتاحية وإنشاء خطط محتوى SEO مع تتبع ترتيب الموقع
+                </p>
+                <ul class="agent-features">
+                    <li><i class="fas fa-check-circle"></i><span data-ar="بحث الكلمات المفتاحية" data-en="Keyword Research">بحث الكلمات المفتاحية</span></li>
+                    <li><i class="fas fa-check-circle"></i><span data-ar="تحليل المنافسين" data-en="Competitor Analysis">تحليل المنافسين</span></li>
+                    <li><i class="fas fa-check-circle"></i><span data-ar="خطط محتوى SEO" data-en="SEO Content Plans">خطط محتوى SEO</span></li>
+                    <li><i class="fas fa-check-circle"></i><span data-ar="تتبع الترتيب" data-en="Ranking Tracking">تتبع الترتيب</span></li>
+                </ul>
+            </div>
+
+            <!-- Agent 5: Media Buying Agent -->
+            <div class="agent-card animate-on-scroll">
+                <div class="agent-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <h3 class="agent-title" data-ar="وكيل الإعلانات المدفوعة" data-en="Media Buying Agent">وكيل الإعلانات المدفوعة</h3>
+                <p class="agent-description" data-ar="إدارة وتحسين الحملات الإعلانية المدفوعة عبر جميع المنصات بذكاء اصطناعي" 
+                   data-en="AI-powered management and optimization of paid advertising campaigns across all platforms">
+                   إدارة وتحسين الحملات الإعلانية المدفوعة عبر جميع المنصات بذكاء اصطناعي
+                </p>
+                <ul class="agent-features">
+                    <li><i class="fas fa-check-circle"></i><span data-ar="تحسين تلقائي للميزانية" data-en="Auto Budget Optimization">تحسين تلقائي للميزانية</span></li>
+                    <li><i class="fas fa-check-circle"></i><span data-ar="استهداف ذكي للجمهور" data-en="Smart Audience Targeting">استهداف ذكي للجمهور</span></li>
+                    <li><i class="fas fa-check-circle"></i><span data-ar="اختبار الإعلانات" data-en="Ad Testing">اختبار الإعلانات</span></li>
+                    <li><i class="fas fa-check-circle"></i><span data-ar="تقارير ROI مفصلة" data-en="Detailed ROI Reports">تقارير ROI مفصلة</span></li>
+                </ul>
+            </div>
+
+            <!-- Agent 6: Reporting Agent -->
+            <div class="agent-card animate-on-scroll">
+                <div class="agent-icon">
+                    <i class="fas fa-file-chart-line"></i>
+                </div>
+                <h3 class="agent-title" data-ar="وكيل التقارير والتحليلات" data-en="Reporting Agent">وكيل التقارير والتحليلات</h3>
+                <p class="agent-description" data-ar="إنشاء تقارير شاملة تلقائية مع رؤى قابلة للتنفيذ ومؤشرات أداء رئيسية" 
+                   data-en="Generate comprehensive automated reports with actionable insights and KPIs">
+                   إنشاء تقارير شاملة تلقائية مع رؤى قابلة للتنفيذ ومؤشرات أداء رئيسية
+                </p>
+                <ul class="agent-features">
+                    <li><i class="fas fa-check-circle"></i><span data-ar="تقارير تلقائية يومية" data-en="Daily Auto Reports">تقارير تلقائية يومية</span></li>
+                    <li><i class="fas fa-check-circle"></i><span data-ar="لوحات معلومات تفاعلية" data-en="Interactive Dashboards">لوحات معلومات تفاعلية</span></li>
+                    <li><i class="fas fa-check-circle"></i><span data-ar="رؤى قابلة للتنفيذ" data-en="Actionable Insights">رؤى قابلة للتنفيذ</span></li>
+                    <li><i class="fas fa-check-circle"></i><span data-ar="مقارنات الأداء" data-en="Performance Comparisons">مقارنات الأداء</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Master Brain Section -->
+        <div class="master-brain animate-on-scroll">
+            <div class="section-header">
+                <div class="section-tag" data-ar="العقل المدبر" data-en="Master Brain">العقل المدبر</div>
+                <h2 class="section-title" data-ar="نظام التحكم المركزي" data-en="Central Control System">نظام التحكم المركزي</h2>
+                <p class="section-description" data-ar="جميع الوكلاء متصلون بالعقل المدبر الذي ينسق العمليات ويتخذ القرارات الاستراتيجية" 
+                   data-en="All agents connected to the Master Brain that coordinates operations and makes strategic decisions">
+                   جميع الوكلاء متصلون بالعقل المدبر الذي ينسق العمليات ويتخذ القرارات الاستراتيجية
+                </p>
+            </div>
+
+            <div class="brain-network">
+                <canvas id="brainCanvas"></canvas>
+                <div class="brain-nodes">
+                    <div class="brain-node">
+                        <i class="fas fa-pen-fancy"></i>
+                        <span data-ar="محتوى" data-en="Content">محتوى</span>
+                    </div>
+                    <div class="brain-node">
+                        <i class="fas fa-chart-bar"></i>
+                        <span data-ar="تحليل" data-en="Analysis">تحليل</span>
+                    </div>
+                    <div class="brain-node">
+                        <i class="fas fa-users"></i>
+                        <span data-ar="سوشيال" data-en="Social">سوشيال</span>
+                    </div>
+                    <div class="brain-node">
+                        <i class="fas fa-search"></i>
+                        <span data-ar="SEO" data-en="SEO">SEO</span>
+                    </div>
+                    <div class="brain-node">
+                        <i class="fas fa-bullhorn"></i>
+                        <span data-ar="إعلانات" data-en="Ads">إعلانات</span>
+                    </div>
+                    <div class="brain-node">
+                        <i class="fas fa-file-chart-line"></i>
+                        <span data-ar="تقارير" data-en="Reports">تقارير</span>
+                    </div>
+                </div>
+                <div class="brain-center">
+                    <i class="fas fa-brain"></i>
+                    <span data-ar="العقل المدبر" data-en="Master Brain">العقل المدبر</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <div class="section-header">
+            <div class="section-tag" data-ar="المميزات" data-en="Features">المميزات</div>
+            <h2 class="section-title" data-ar="لماذا Market Flow؟" data-en="Why Market Flow?">لماذا Market Flow؟</h2>
+            <p class="section-description" data-ar="منصة شاملة توفر كل ما تحتاجه لبناء قسم تسويق ذكي يعمل بكفاءة 24/7" 
+               data-en="Complete platform providing everything you need to build an AI marketing department running 24/7">
+               منصة شاملة توفر كل ما تحتاجه لبناء قسم تسويق ذكي يعمل بكفاءة 24/7
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3 class="feature-title" data-ar="Agent Thinking Logic" data-en="Agent Thinking Logic">Agent Thinking Logic</h3>
+                <p class="feature-description" data-ar="وكلاء ذكيين مع منطق اتخاذ قرار متقدم وحلقات تفكير ديناميكية" 
+                   data-en="Smart agents with advanced decision logic and dynamic thinking loops">
+                   وكلاء ذكيين مع منطق اتخاذ قرار متقدم وحلقات تفكير ديناميكية
+                </p>
+            </div>
+
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">
+                    <i class="fas fa-sync"></i>
+                </div>
+                <h3 class="feature-title" data-ar="أتمتة كاملة" data-en="Full Automation">أتمتة كاملة</h3>
+                <p class="feature-description" data-ar="سير عمل تلقائي متكامل من البداية للنهاية بدون تدخل يدوي" 
+                   data-en="End-to-end automated workflows without manual intervention">
+                   سير عمل تلقائي متكامل من البداية للنهاية بدون تدخل يدوي
+                </p>
+            </div>
+
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="feature-title" data-ar="بيئة آمنة" data-en="Secure Environment">بيئة آمنة</h3>
+                <p class="feature-description" data-ar="إدارة آمنة لـ API Keys و Credentials في بيئة محمية" 
+                   data-en="Secure management of API Keys and Credentials in protected environment">
+                   إدارة آمنة لـ API Keys و Credentials في بيئة محمية
+                </p>
+            </div>
+
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">
+                    <i class="fas fa-plug"></i>
+                </div>
+                <h3 class="feature-title" data-ar="تكامل ERPNext" data-en="ERPNext Integration">تكامل ERPNext</h3>
+                <p class="feature-description" data-ar="ربط مباشر مع نظام ERPNext لإدارة متكاملة للعمليات" 
+                   data-en="Direct integration with ERPNext for unified operations management">
+                   ربط مباشر مع نظام ERPNext لإدارة متكاملة للعمليات
+                </p>
+            </div>
+
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">
+                    <i class="fas fa-users-cog"></i>
+                </div>
+                <h3 class="feature-title" data-ar="Client Onboarding" data-en="Client Onboarding">Client Onboarding</h3>
+                <p class="feature-description" data-ar="نظام آلي لإضافة العملاء وإعداد حملاتهم وتسليم النتائج" 
+                   data-en="Automated system for client addition, campaign setup, and delivery">
+                   نظام آلي لإضافة العملاء وإعداد حملاتهم وتسليم النتائج
+                </p>
+            </div>
+
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3 class="feature-title" data-ar="Base Agent Template" data-en="Base Agent Template">Base Agent Template</h3>
+                <p class="feature-description" data-ar="قوالب جاهزة لبناء وكلاء جدد بسهولة وتخصيصهم حسب الحاجة" 
+                   data-en="Ready templates to easily build and customize new agents">
+                   قوالب جاهزة لبناء وكلاء جدد بسهولة وتخصيصهم حسب الحاجة
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integration Section -->
+    <section class="section" id="integration">
+        <div class="section-header">
+            <div class="section-tag" data-ar="التكامل" data-en="Integration">التكامل</div>
+            <h2 class="section-title" data-ar="تكامل قوي مع أفضل الأنظمة" data-en="Powerful Integration with Best Systems">تكامل قوي مع أفضل الأنظمة</h2>
+        </div>
+
+        <div class="integration-showcase animate-on-scroll">
+            <div class="integration-content">
+                <h3 data-ar="n8n + ERPNext = قوة لا تُقهر" data-en="n8n + ERPNext = Unbeatable Power">n8n + ERPNext = قوة لا تُقهر</h3>
+                <p data-ar="نظام Market Flow مبني على تكامل قوي بين n8n للأتمتة الذكية و ERPNext لإدارة الموارد، مما يوفر حل شامل ومتكامل." 
+                   data-en="Market Flow is built on powerful integration between n8n for smart automation and ERPNext for resource management, providing a comprehensive solution.">
+                   نظام Market Flow مبني على تكامل قوي بين n8n للأتمتة الذكية و ERPNext لإدارة الموارد، مما يوفر حل شامل ومتكامل.
+                </p>
+                <ul class="integration-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span data-ar="أتمتة متقدمة لسير العمل عبر n8n" data-en="Advanced workflow automation via n8n">أتمتة متقدمة لسير العمل عبر n8n</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span data-ar="إدارة العملاء والمشاريع في ERPNext" data-en="Client and project management in ERPNext">إدارة العملاء والمشاريع في ERPNext</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span data-ar="تتبع الأداء المالي والتقارير" data-en="Financial performance tracking and reporting">تتبع الأداء المالي والتقارير</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span data-ar="مزامنة فورية للبيانات" data-en="Real-time data synchronization">مزامنة فورية للبيانات</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="integration-visual">
+                <div class="integration-logos">
+                    <div class="logo-item logo-n8n">
+                        <i class="fas fa-project-diagram"></i> n8n
+                    </div>
+                    <div style="font-size: 2rem; color: var(--primary);">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="logo-item logo-erpnext">
+                        <i class="fas fa-database"></i> ERPNext
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section">
+        <div class="cta-section animate-on-scroll">
+            <h2 data-ar="جاهز لبناء قسم التسويق الذكي؟" data-en="Ready to Build Your AI Marketing Department?">جاهز لبناء قسم التسويق الذكي؟</h2>
+            <p data-ar="انضم الآن واحصل على نظام تسويق كامل يعمل بالذكاء الاصطناعي - يفكر، ينفذ، يتابع" 
+               data-en="Join now and get a complete AI marketing system - Think, Execute, Monitor">
+               انضم الآن واحصل على نظام تسويق كامل يعمل بالذكاء الاصطناعي - يفكر، ينفذ، يتابع
+            </p>
+            <button class="btn">
+                <i class="fas fa-rocket"></i>
+                <span data-ar="ابدأ رحلتك المجانية الآن" data-en="Start Your Free Journey Now">ابدأ رحلتك المجانية الآن</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo" style="margin-bottom: 1rem;">
+                    <i class="fas fa-brain"></i>
+                    <span>Market Flow</span>
+                </div>
+                <p data-ar="نظام تسويق ذكي متكامل مدعوم بـ n8n و ERPNext" 
+                   data-en="Complete AI marketing system powered by n8n & ERPNext">
+                   نظام تسويق ذكي متكامل مدعوم بـ n8n و ERPNext
+                </p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h3>
+                <ul>
+                    <li><a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+                    <li><a href="#agents" data-ar="الوكلاء الذكيين" data-en="AI Agents">الوكلاء الذكيين</a></li>
+                    <li><a href="#features" data-ar="المميزات" data-en="Features">المميزات</a></li>
+                    <li><a href="#integration" data-ar="التكامل" data-en="Integration">التكامل</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 data-ar="الوكلاء" data-en="Agents">الوكلاء</h3>
+                <ul>
+                    <li><a href="#" data-ar="وكيل المحتوى" data-en="Content Agent">وكيل المحتوى</a></li>
+                    <li><a href="#" data-ar="وكيل التحليل" data-en="Analysis Agent">وكيل التحليل</a></li>
+                    <li><a href="#" data-ar="وكيل السوشيال" data-en="Social Agent">وكيل السوشيال</a></li>
+                    <li><a href="#" data-ar="وكيل SEO" data-en="SEO Agent">وكيل SEO</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 data-ar="الدعم" data-en="Support">الدعم</h3>
+                <ul>
+                    <li><a href="#" data-ar="التوثيق" data-en="Documentation">التوثيق</a></li>
+                    <li><a href="#" data-ar="دروس تعليمية" data-en="Tutorials">دروس تعليمية</a></li>
+                    <li><a href="#" data-ar="الأسئلة الشائعة" data-en="FAQ">الأسئلة الشائعة</a></li>
+                    <li><a href="#" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-ar="© 2026 Market Flow. جميع الحقوق محفوظة. صُنع بـ ❤️ للمسوقين المحترفين" 
+               data-en="© 2026 Market Flow. All rights reserved. Made with ❤️ for professional marketers">
+               © 2026 Market Flow. جميع الحقوق محفوظة. صُنع بـ ❤️ للمسوقين المحترفين
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Language Toggle
+        let currentLang = 'ar';
+        
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            const html = document.documentElement;
+            const langText = document.getElementById('langText');
+            
+            if (currentLang === 'en') {
+                html.setAttribute('lang', 'en');
+                html.setAttribute('dir', 'ltr');
+                langText.textContent = 'ع';
+            } else {
+                html.setAttribute('lang', 'ar');
+                html.setAttribute('dir', 'rtl');
+                langText.textContent = 'EN';
+            }
+            
+            // Update all translatable elements
+            document.querySelectorAll('[data-ar]').forEach(el => {
+                const text = currentLang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = text;
+                } else {
+                    el.textContent = text;
+                }
+            });
+        }
+
+        // Scroll Animation
+        function handleScrollAnimation() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight - 100;
+                if (isVisible) {
+                    el.classList.add('animated');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScrollAnimation);
+        handleScrollAnimation(); // Initial check
+
+        // Brain Network Animation
+        const canvas = document.getElementById('brainCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        function resizeCanvas() {
+            const parent = canvas.parentElement;
+            canvas.width = parent.offsetWidth;
+            canvas.height = parent.offsetHeight;
+        }
+        
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        function drawConnections() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const center = {
+                x: canvas.width / 2,
+                y: canvas.height / 2
+            };
+            
+            const nodes = document.querySelectorAll('.brain-node');
+            
+            nodes.forEach((node, index) => {
+                const rect = node.getBoundingClientRect();
+                const parentRect = canvas.parentElement.getBoundingClientRect();
+                
+                const nodeX = rect.left + rect.width / 2 - parentRect.left;
+                const nodeY = rect.top + rect.height / 2 - parentRect.top;
+                
+                // Animated gradient line
+                const gradient = ctx.createLinearGradient(center.x, center.y, nodeX, nodeY);
+                gradient.addColorStop(0, 'rgba(99, 102, 241, 0.6)');
+                gradient.addColorStop(1, 'rgba(139, 92, 246, 0.3)');
+                
+                ctx.beginPath();
+                ctx.moveTo(center.x, center.y);
+                ctx.lineTo(nodeX, nodeY);
+                ctx.strokeStyle = gradient;
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                
+                // Animated dots along the line
+                const time = Date.now() / 1000;
+                const progress = (time + index * 0.5) % 1;
+                const dotX = center.x + (nodeX - center.x) * progress;
+                const dotY = center.y + (nodeY - center.y) * progress;
+                
+                ctx.beginPath();
+                ctx.arc(dotX, dotY, 4, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(99, 102, 241, 0.8)';
+                ctx.fill();
+            });
+            
+            requestAnimationFrame(drawConnections);
+        }
+        
+        drawConnections();
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Stats Counter Animation
+        function animateCounter(element) {
+            const target = parseInt(element.textContent);
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    element.textContent = target + (element.textContent.includes('%') ? '%' : '+');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + (element.textContent.includes('%') ? '%' : '+');
+                }
+            }, 16);
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.stat-number');
+                    counters.forEach(counter => {
+                        if (!counter.classList.contains('animated')) {
+                            counter.classList.add('animated');
+                            animateCounter(counter);
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+    </script>
+</body>
+</html>
