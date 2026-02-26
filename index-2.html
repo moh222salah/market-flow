@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Market Flow — AI-Powered Marketing Automation Platform. 6 intelligent agents for content, SEO, ads, analytics and more.">
+<meta property="og:title" content="Market Flow — Intelligent Marketing Automation">
+<meta property="og:description" content="Transform your marketing with 6 AI agents. Bilingual. Automated. Unstoppable.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0a0a0a">
+<title>Market Flow — Intelligent Marketing Automation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ═══════════════════════════════════════════════
+   1. CSS VARIABLES + DARK THEME
+═══════════════════════════════════════════════ */
+:root {
+  --primary: #0A0A0A;
+  --primary-dark: #000000;
+  --accent: #1A1A1A;
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --snow: #F8F9FA;
+  --snow-pure: #FFFFFF;
+  --bg: #F8F9FA;
+  --bg-card: #FFFFFF;
+  --bg-card2: #F3F4F6;
+  --text: #0A0A0A;
+  --text-muted: #6B7280;
+  --text-light: #9CA3AF;
+  --border: #E5E7EB;
+  --border-strong: #D1D5DB;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 10px 40px rgba(0,0,0,0.10);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,0.15);
+  --shadow-glow: 0 0 32px rgba(201,168,76,0.20);
+  --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+  --transition-slow: 0.6s cubic-bezier(0.4,0,0.2,1);
+  --radius: 16px;
+  --radius-sm: 8px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+}
+[data-theme="dark"] {
+  --bg: #060606;
+  --bg-card: #111111;
+  --bg-card2: #1A1A1A;
+  --text: #F8F9FA;
+  --text-muted: #9CA3AF;
+  --text-light: #6B7280;
+  --border: rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.15);
+  --shadow-lg: 0 10px 40px rgba(0,0,0,0.50);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,0.70);
+}
+
+/* ═══════════════════════════════════════════════
+   2. RESET + BASE
+═══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  transition: background var(--transition-slow), color var(--transition);
+  -webkit-font-smoothing: antialiased;
+}
+[lang="ar"] body, [lang="ar"] * { font-family: 'Cairo', sans-serif; }
+html[lang="ar"] { font-family: 'Cairo', sans-serif; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* ═══════════════════════════════════════════════
+   3. TYPOGRAPHY
+═══════════════════════════════════════════════ */
+h1 { font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; }
+h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; }
+h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 700; line-height: 1.3; }
+h4 { font-size: clamp(1rem, 1.5vw, 1.2rem); font-weight: 600; }
+p { line-height: 1.7; color: var(--text-muted); }
+
+.text-gold { color: var(--gold); }
+.text-muted { color: var(--text-muted); }
+.text-center { text-align: center; }
+
+/* ═══════════════════════════════════════════════
+   4. UTILITY CLASSES
+═══════════════════════════════════════════════ */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section { padding: clamp(64px, 10vw, 120px) 0; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold); padding: 6px 16px; border-radius: 99px;
+  border: 1px solid rgba(201,168,76,0.3);
+  background: rgba(201,168,76,0.08);
+  margin-bottom: 20px;
+}
+.section-header { margin-bottom: clamp(40px, 6vw, 64px); }
+.divider { width: 60px; height: 3px; background: var(--gold); border-radius: 2px; margin: 20px auto 0; }
+[dir="rtl"] .divider { margin: 20px auto 0; }
+
+/* Grid */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+/* ═══════════════════════════════════════════════
+   5. BUTTONS
+═══════════════════════════════════════════════ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 28px; border-radius: var(--radius); font-weight: 600;
+  font-size: 0.95rem; cursor: pointer; border: none; min-height: 48px;
+  transition: all var(--transition); white-space: nowrap;
+  font-family: inherit; position: relative; overflow: hidden;
+}
+.btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(255,255,255,0.1); opacity: 0;
+  transition: opacity var(--transition);
+}
+.btn:hover::before { opacity: 1; }
+.btn-primary {
+  background: var(--text);
+  color: var(--bg);
+  box-shadow: var(--shadow-md);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #000;
+  box-shadow: var(--shadow-glow);
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,168,76,0.4); }
+.btn-outline {
+  background: transparent; color: var(--text);
+  border: 1.5px solid var(--border-strong);
+}
+.btn-outline:hover { border-color: var(--text); background: var(--bg-card2); transform: translateY(-2px); }
+.btn-ghost {
+  background: transparent; color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover { color: var(--text); border-color: var(--border-strong); }
+.btn-lg { padding: 18px 36px; font-size: 1rem; min-height: 56px; border-radius: 18px; }
+.btn-sm { padding: 8px 18px; font-size: 0.85rem; min-height: 38px; border-radius: var(--radius-sm); }
+.btn-wa {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.25);
+}
+.btn-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(37,211,102,0.40); }
+
+/* ═══════════════════════════════════════════════
+   6. CARDS
+═══════════════════════════════════════════════ */
+.card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 32px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+}
+.card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--border-strong); }
+.card-sm { padding: 20px; border-radius: var(--radius); }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 12px; border-radius: 99px;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em;
+}
+.badge-gold { background: rgba(201,168,76,0.12); color: var(--gold); border: 1px solid rgba(201,168,76,0.25); }
+.badge-green { background: rgba(16,185,129,0.1); color: #059669; border: 1px solid rgba(16,185,129,0.2); }
+.badge-blue { background: rgba(59,130,246,0.1); color: #2563EB; border: 1px solid rgba(59,130,246,0.2); }
+.badge-red { background: rgba(239,68,68,0.1); color: #DC2626; border: 1px solid rgba(239,68,68,0.2); }
+.badge-dark { background: var(--text); color: var(--bg); }
+
+/* ═══════════════════════════════════════════════
+   7. HEADER
+═══════════════════════════════════════════════ */
+#header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  transition: all var(--transition);
+  background: rgba(248,249,250,0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid transparent;
+}
+[data-theme="dark"] #header {
+  background: rgba(6,6,6,0.85);
+}
+#header.scrolled { border-bottom-color: var(--border); box-shadow: var(--shadow-sm); }
+.header-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 24px;
+  height: 70px; display: flex; align-items: center; justify-content: space-between;
+}
+.logo {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 1.3rem; font-weight: 900; letter-spacing: -0.03em;
+}
+.logo-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: var(--text);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--bg); font-size: 1rem;
+}
+.logo-text span { color: var(--gold); }
+.nav-links { display: flex; align-items: center; gap: 6px; }
+.nav-link {
+  padding: 8px 14px; border-radius: var(--radius-sm); font-weight: 500;
+  font-size: 0.9rem; color: var(--text-muted); transition: all var(--transition);
+  cursor: pointer; min-height: 44px; display: flex; align-items: center;
+}
+.nav-link:hover, .nav-link.active { color: var(--text); background: var(--bg-card2); }
+.header-controls { display: flex; align-items: center; gap: 8px; }
+.ctrl-btn {
+  width: 40px; height: 40px; border-radius: var(--radius-sm); border: 1px solid var(--border);
+  background: var(--bg-card); cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; color: var(--text-muted); transition: all var(--transition);
+  font-family: inherit; font-weight: 600; font-size: 0.75rem;
+}
+.ctrl-btn:hover { color: var(--text); border-color: var(--border-strong); background: var(--bg-card2); }
+
+/* ═══════════════════════════════════════════════
+   8. HERO
+═══════════════════════════════════════════════ */
+#hero {
+  min-height: 100vh; position: relative; display: flex; align-items: center;
+  padding-top: 70px; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+}
+.hero-bg-img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(30%) brightness(0.4);
+}
+.hero-bg-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg,
+    rgba(248,249,250,0.97) 0%,
+    rgba(248,249,250,0.92) 40%,
+    rgba(248,249,250,0.7) 70%,
+    rgba(248,249,250,0.4) 100%
+  );
+}
+[data-theme="dark"] .hero-bg-overlay {
+  background: linear-gradient(135deg,
+    rgba(6,6,6,0.97) 0%,
+    rgba(6,6,6,0.92) 40%,
+    rgba(6,6,6,0.7) 70%,
+    rgba(6,6,6,0.4) 100%
+  );
+}
+.hero-content { position: relative; z-index: 1; max-width: 720px; }
+.hero-label { animation: fadeInUp 0.6s ease both; }
+.hero-title {
+  margin: 24px 0 20px;
+  animation: fadeInUp 0.7s 0.1s ease both;
+}
+.hero-title .line2 { display: block; color: var(--gold); position: relative; }
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem); max-width: 520px; margin-bottom: 40px;
+  animation: fadeInUp 0.7s 0.2s ease both;
+}
+.hero-ctas {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  animation: fadeInUp 0.7s 0.3s ease both;
+}
+.hero-stats {
+  display: flex; gap: 32px; margin-top: 60px; flex-wrap: wrap;
+  animation: fadeInUp 0.7s 0.4s ease both;
+}
+.hero-stat-num {
+  font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 900; line-height: 1;
+  letter-spacing: -0.03em;
+}
+.hero-stat-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
+
+/* Floating elements */
+.hero-float {
+  position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+  z-index: 1; display: flex; flex-direction: column; gap: 16px;
+  animation: fadeInRight 0.8s 0.5s ease both;
+}
+.float-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 16px 20px;
+  box-shadow: var(--shadow-lg); min-width: 200px;
+  animation: floatY 3s ease-in-out infinite;
+}
+.float-card:nth-child(2) { animation-delay: -1s; margin-left: 30px; }
+.float-card:nth-child(3) { animation-delay: -2s; }
+.float-card-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 6px; }
+.float-card-val { font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; }
+.float-card-sub { font-size: 0.78rem; color: var(--text-muted); }
+
+/* Canvas brain */
+#hero-canvas {
+  position: absolute; right: 0; top: 70px; bottom: 0;
+  width: 50%; opacity: 0.06; z-index: 0;
+  pointer-events: none;
+}
+[data-theme="dark"] #hero-canvas { opacity: 0.12; }
+
+/* ═══════════════════════════════════════════════
+   9. ABOUT
+═══════════════════════════════════════════════ */
+#about { background: var(--bg); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.about-text h2 { margin-bottom: 24px; }
+.about-text p { margin-bottom: 16px; font-size: 0.97rem; }
+.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+.stat-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px 20px;
+  text-align: center; transition: all var(--transition);
+  cursor: default;
+}
+.stat-card:hover { border-color: var(--gold); box-shadow: var(--shadow-glow); transform: translateY(-3px); }
+.stat-num { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 900; letter-spacing: -0.03em; color: var(--text); }
+.stat-num .plus { color: var(--gold); }
+.stat-lbl { font-size: 0.82rem; color: var(--text-muted); margin-top: 4px; font-weight: 500; }
+
+/* ═══════════════════════════════════════════════
+   10. AGENTS / PRODUCTS
+═══════════════════════════════════════════════ */
+#agents { background: var(--bg-card2); }
+.agents-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.agent-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 28px;
+  cursor: pointer; transition: all var(--transition);
+  position: relative; overflow: hidden;
+}
+.agent-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: scaleX(0); transition: transform var(--transition);
+}
+.agent-card:hover { box-shadow: var(--shadow-xl); transform: translateY(-6px); border-color: var(--border-strong); }
+.agent-card:hover::before { transform: scaleX(1); }
+.agent-icon-wrap {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; margin-bottom: 20px;
+  transition: transform var(--transition);
+}
+.agent-card:hover .agent-icon-wrap { transform: scale(1.1) rotate(-5deg); }
+.agent-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+.agent-card p { font-size: 0.88rem; line-height: 1.6; }
+.agent-arrow {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.82rem; font-weight: 700; color: var(--gold);
+  margin-top: 20px; transition: gap var(--transition);
+}
+.agent-card:hover .agent-arrow { gap: 10px; }
+[dir="rtl"] .agent-arrow { flex-direction: row-reverse; }
+[dir="rtl"] .agent-arrow .arr { transform: scaleX(-1); }
+.agent-count { font-size: 0.72rem; color: var(--text-light); margin-top: 4px; }
+
+/* Color themes per agent */
+.agent-c1 .agent-icon-wrap { background: rgba(201,168,76,0.12); color: var(--gold); }
+.agent-c2 .agent-icon-wrap { background: rgba(59,130,246,0.1); color: #3B82F6; }
+.agent-c3 .agent-icon-wrap { background: rgba(16,185,129,0.1); color: #10B981; }
+.agent-c4 .agent-icon-wrap { background: rgba(239,68,68,0.1); color: #EF4444; }
+.agent-c5 .agent-icon-wrap { background: rgba(168,85,247,0.1); color: #A855F7; }
+.agent-c6 .agent-icon-wrap { background: rgba(249,115,22,0.1); color: #F97316; }
+
+/* Brain visualization */
+.brain-section {
+  background: var(--bg); padding: clamp(48px, 8vw, 80px) 0;
+  position: relative; overflow: hidden;
+}
+.brain-wrap {
+  position: relative; max-width: 700px; margin: 0 auto;
+  aspect-ratio: 16/9;
+}
+#brain-canvas { width: 100%; height: 100%; }
+.brain-label {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  text-align: center; pointer-events: none;
+}
+.brain-label-title { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; }
+.brain-label-sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+
+/* ═══════════════════════════════════════════════
+   11. FEATURES SECTION
+═══════════════════════════════════════════════ */
+#features { background: var(--bg-card2); }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.feature-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 32px;
+  transition: all var(--transition);
+}
+.feature-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--gold); }
+.feature-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: var(--text); color: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; margin-bottom: 20px;
+}
+.feature-card h4 { margin-bottom: 10px; font-size: 1.05rem; }
+.feature-card p { font-size: 0.88rem; }
+
+/* ═══════════════════════════════════════════════
+   12. INTEGRATION SECTION
+═══════════════════════════════════════════════ */
+#integration { background: var(--bg); }
+.integration-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.int-logo-pair {
+  display: flex; align-items: center; justify-content: center; gap: 24px;
+  margin-bottom: 40px;
+}
+.int-logo {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 20px 32px;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  font-weight: 800; font-size: 1.2rem;
+  transition: all var(--transition);
+  animation: floatY 3s ease-in-out infinite;
+}
+.int-logo:nth-child(3) { animation-delay: -1.5s; }
+.int-logo:hover { box-shadow: var(--shadow-glow); border-color: var(--gold); }
+.int-connector {
+  font-size: 1.5rem; color: var(--gold); font-weight: 900;
+  animation: pulse 2s ease-in-out infinite;
+}
+.int-list { list-style: none; }
+.int-list li {
+  padding: 10px 0; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 12px;
+  font-size: 0.93rem; font-weight: 500;
+}
+.int-list li:last-child { border-bottom: none; }
+.int-list li i { color: var(--gold); width: 16px; }
+
+/* ═══════════════════════════════════════════════
+   13. CONTACT
+═══════════════════════════════════════════════ */
+#contact { background: var(--bg-card2); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.contact-info { display: flex; flex-direction: column; gap: 20px; }
+.contact-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 20px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  transition: all var(--transition);
+}
+.contact-item:hover { border-color: var(--gold); box-shadow: var(--shadow-glow); }
+.contact-item-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: var(--text); color: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+}
+.contact-item-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 4px; }
+.contact-item-val { font-size: 0.95rem; font-weight: 600; }
+.contact-item-val a { transition: color var(--transition); }
+.contact-item-val a:hover { color: var(--gold); }
+.map-placeholder {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); min-height: 360px;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 12px; overflow: hidden;
+  position: relative;
+}
+.map-placeholder i { font-size: 3rem; color: var(--gold); }
+.map-placeholder p { font-size: 0.9rem; color: var(--text-muted); }
+
+/* ═══════════════════════════════════════════════
+   14. FOOTER
+═══════════════════════════════════════════════ */
+#footer {
+  background: var(--primary); color: #fff;
+  padding: 64px 0 32px;
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+.footer-brand p { font-size: 0.88rem; color: rgba(255,255,255,0.55); margin-top: 16px; max-width: 280px; line-height: 1.7; }
+.footer-social { display: flex; gap: 10px; margin-top: 20px; }
+.footer-social a {
+  width: 38px; height: 38px; border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; transition: all var(--transition);
+}
+.footer-social a:hover { background: var(--gold); color: #000; }
+.footer-col h5 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.45); margin-bottom: 16px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.footer-links a { font-size: 0.88rem; color: rgba(255,255,255,0.7); transition: color var(--transition); }
+.footer-links a:hover { color: var(--gold); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 24px; display: flex; align-items: center;
+  justify-content: space-between; font-size: 0.82rem;
+  color: rgba(255,255,255,0.4);
+}
+.footer-logo-small { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 1.1rem; color: #fff; }
+.footer-logo-small span { color: var(--gold); }
+
+/* ═══════════════════════════════════════════════
+   15. WHATSAPP FLOAT + MOBILE NAV
+═══════════════════════════════════════════════ */
+#wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 800;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1.4rem;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: all var(--transition); cursor: pointer;
+  animation: pulseShadow 2s ease-in-out infinite;
+}
+[dir="rtl"] #wa-float { right: auto; left: 28px; }
+#wa-float:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37,211,102,0.6); }
+#mobile-nav {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 950;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+}
+.mob-nav-inner { display: flex; justify-content: space-around; }
+.mob-nav-item {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 8px 16px; cursor: pointer; min-width: 56px; min-height: 44px;
+  border-radius: var(--radius-sm); transition: all var(--transition);
+  color: var(--text-muted); font-size: 0.7rem; font-weight: 600;
+  border: none; background: none; font-family: inherit;
+}
+.mob-nav-item:hover, .mob-nav-item.active { color: var(--text); }
+.mob-nav-item i { font-size: 1.1rem; }
+.mob-nav-item.wa-nav { color: #25D366; }
+
+/* ═══════════════════════════════════════════════
+   16. MODALS
+═══════════════════════════════════════════════ */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; opacity: 0; pointer-events: none;
+  transition: opacity var(--transition);
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal-box {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); padding: 0;
+  max-width: 900px; width: 100%; max-height: 90vh;
+  overflow-y: auto; position: relative;
+  transform: scale(0.95) translateY(20px); opacity: 0;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-xl);
+}
+.modal-overlay.open .modal-box { transform: scale(1) translateY(0); opacity: 1; }
+.modal-close {
+  position: absolute; top: 16px; right: 16px; z-index: 10;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--bg-card2); border: 1px solid var(--border);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; color: var(--text-muted); transition: all var(--transition);
+}
+[dir="rtl"] .modal-close { right: auto; left: 16px; }
+.modal-close:hover { color: var(--text); border-color: var(--border-strong); }
+.modal-header {
+  padding: 32px 32px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 16px;
+}
+.modal-body { padding: 32px; }
+.modal-icon-lg {
+  width: 64px; height: 64px; border-radius: 18px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; flex-shrink: 0;
+}
+
+/* Product detail modal level 2 (z: 2000) */
+#product-modal { z-index: 2000; }
+.product-detail {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+}
+.product-img-side {
+  position: relative; background: var(--bg-card2);
+  border-radius: var(--radius-xl) 0 0 var(--radius-xl); overflow: hidden;
+  min-height: 480px;
+}
+.product-img-side img { width: 100%; height: 100%; object-fit: cover; }
+.product-info-side { padding: 40px; }
+.product-price { font-size: 2.2rem; font-weight: 900; letter-spacing: -0.03em; margin: 12px 0; }
+.product-price small { font-size: 1rem; font-weight: 400; color: var(--text-muted); }
+.product-specs { margin: 20px 0; display: flex; flex-direction: column; gap: 10px; }
+.product-spec {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px; background: var(--bg-card2);
+  border-radius: var(--radius-sm); font-size: 0.88rem;
+}
+.product-spec-key { color: var(--text-muted); font-weight: 500; }
+.product-spec-val { font-weight: 700; }
+
+/* Category modal grid */
+.cat-modal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.cat-product-card {
+  background: var(--bg-card2); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden; cursor: pointer;
+  transition: all var(--transition);
+}
+.cat-product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--border-strong); }
+.cat-product-img {
+  width: 100%; aspect-ratio: 16/10; object-fit: cover;
+  background: var(--border);
+}
+.cat-product-info { padding: 14px; }
+.cat-product-name { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+.cat-product-price { font-size: 0.88rem; font-weight: 800; color: var(--gold); }
+
+/* ═══════════════════════════════════════════════
+   17. ANIMATIONS
+═══════════════════════════════════════════════ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes pulseShadow {
+  0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+  50% { box-shadow: 0 4px 30px rgba(37,211,102,0.7), 0 0 40px rgba(37,211,102,0.2); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.2); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* Gold gradient text */
+.gold-gradient {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold));
+  background-size: 200% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ═══════════════════════════════════════════════
+   18. RESPONSIVE
+═══════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .hero-float { display: none; }
+  .agents-grid, .features-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  #wa-float { display: none; }
+  #mobile-nav { display: block; }
+  body { padding-bottom: 72px; }
+  .about-grid, .contact-grid, .integration-grid, .grid-2 { grid-template-columns: 1fr; }
+  .about-stats { grid-template-columns: 1fr 1fr; }
+  .agents-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr; }
+  .product-detail { grid-template-columns: 1fr; }
+  .product-img-side { border-radius: var(--radius-xl) var(--radius-xl) 0 0; min-height: 220px; }
+  .cat-modal-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .hero-stats { gap: 20px; }
+  .hero-ctas { flex-direction: column; }
+  .hero-ctas .btn { width: 100%; justify-content: center; }
+}
+@media (max-width: 480px) {
+  .cat-modal-grid { grid-template-columns: 1fr; }
+  .about-stats { grid-template-columns: 1fr; }
+  .modal-box { margin: 0; border-radius: var(--radius-lg) var(--radius-lg) 0 0; max-height: 95vh; }
+  .modal-overlay { align-items: flex-end; padding: 0; }
+}
+@media (max-width: 380px) {
+  .header-inner { padding: 0 16px; }
+  .container { padding: 0 16px; }
+  h1 { font-size: 2.4rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ HEADER ═══════ -->
+<header id="header" role="banner">
+  <div class="header-inner">
+    <div class="logo" role="img" aria-label="Market Flow">
+      <div class="logo-icon"><i class="fa-solid fa-chart-line"></i></div>
+      <div class="logo-text">Market<span>Flow</span></div>
+    </div>
+    <nav class="nav-links" role="navigation" aria-label="Main navigation">
+      <a class="nav-link active" onclick="scrollTo('hero')" data-key="nav_home">Home</a>
+      <a class="nav-link" onclick="scrollTo('agents')" data-key="nav_agents">Agents</a>
+      <a class="nav-link" onclick="scrollTo('features')" data-key="nav_features">Features</a>
+      <a class="nav-link" onclick="scrollTo('integration')" data-key="nav_integration">Integration</a>
+      <a class="nav-link" onclick="scrollTo('contact')" data-key="nav_contact">Contact</a>
+    </nav>
+    <div class="header-controls">
+      <button class="ctrl-btn" id="lang-btn" onclick="toggleLang()" aria-label="Toggle language">EN</button>
+      <button class="ctrl-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+      <a class="btn btn-primary btn-sm" id="header-cta" data-key="header_cta" href="#agents">Explore Agents</a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════ HERO ═══════ -->
+<section id="hero" role="main">
+  <div class="hero-bg" aria-hidden="true">
+    <img class="hero-bg-img" id="hero-img" loading="eager"
+      src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&auto=format&fit=crop"
+      alt="Marketing automation background"
+      onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%221600%22 height=%22900%22><rect fill=%22%23111%22 width=%221600%22 height=%22900%22/></svg>'">
+    <div class="hero-bg-overlay"></div>
+  </div>
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+  <div class="container" style="position:relative;z-index:1;width:100%;">
+    <div class="hero-content">
+      <div class="hero-label">
+        <span class="section-label"><i class="fa-solid fa-brain"></i> <span data-key="hero_label">AI-Powered Marketing</span></span>
+      </div>
+      <h1 class="hero-title">
+        <span data-key="hero_title_1">Automate Your</span><br>
+        <span class="line2 gold-gradient" data-key="hero_title_2">Marketing Flow</span>
+      </h1>
+      <p class="hero-subtitle" data-key="hero_subtitle">6 intelligent AI agents working 24/7 to grow your business. Content, SEO, Ads, Analytics — all automated, all connected.</p>
+      <div class="hero-ctas">
+        <button class="btn btn-primary btn-lg" onclick="scrollTo('agents')">
+          <i class="fa-solid fa-rocket"></i> <span data-key="hero_cta1">Explore Agents</span>
+        </button>
+        <a class="btn btn-outline btn-lg" id="hero-wa" href="https://wa.me/+201113903070?text=Hello%2C%20I'm%20interested%20in%20Market%20Flow%20services" target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp" style="color:#25D366;"></i> <span data-key="hero_cta2">WhatsApp Us</span>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num" data-count="6">0</div>
+          <div class="hero-stat-label" data-key="stat_agents">AI Agents</div>
+        </div>
+        <div>
+          <div class="hero-stat-num" data-count="98">0<span>%</span></div>
+          <div class="hero-stat-label" data-key="stat_auto">Automation Rate</div>
+        </div>
+        <div>
+          <div class="hero-stat-num" data-count="500">0<span>+</span></div>
+          <div class="hero-stat-label" data-key="stat_clients">Clients Served</div>
+        </div>
+        <div>
+          <div class="hero-stat-num" data-count="24">0<span>/7</span></div>
+          <div class="hero-stat-label" data-key="stat_support">Always Active</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating cards (desktop) -->
+  <div class="hero-float" aria-hidden="true">
+    <div class="float-card">
+      <div class="float-card-label">Content Generated Today</div>
+      <div class="float-card-val">4,280 <span style="color:var(--gold)">↑</span></div>
+      <div class="float-card-sub">+24% vs yesterday</div>
+    </div>
+    <div class="float-card">
+      <div class="float-card-label">Avg. SEO Score</div>
+      <div class="float-card-val">92<span style="color:var(--gold);font-size:1rem">/100</span></div>
+      <div class="float-card-sub">Top 5% globally</div>
+    </div>
+    <div class="float-card">
+      <div class="float-card-label">Ad ROI</div>
+      <div class="float-card-val">340<span style="color:var(--gold);font-size:1rem">%</span></div>
+      <div class="float-card-sub">This month</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ABOUT ═══════ -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <span class="section-label"><i class="fa-solid fa-building"></i> <span data-key="about_label">About Us</span></span>
+        <h2 data-key="about_title">The Intelligence Behind Your Marketing</h2>
+        <p data-key="about_p1">Market Flow was born from a simple belief: marketing shouldn't require an army of specialists. Our platform deploys 6 specialized AI agents that handle every aspect of your digital marketing — around the clock, without error.</p>
+        <p data-key="about_p2">We integrate seamlessly with your existing tools including ERPNext and n8n, creating a fully automated marketing engine that learns, adapts, and grows with your business.</p>
+        <p data-key="about_p3">Trusted by 500+ businesses across 30+ countries, Market Flow has become the gold standard in AI-powered marketing automation for companies that demand excellence.</p>
+      </div>
+      <div class="about-stats reveal reveal-delay-2">
+        <div class="stat-card">
+          <div class="stat-num">5<span class="plus">+</span></div>
+          <div class="stat-lbl" data-key="about_stat1">Years of Innovation</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">500<span class="plus">+</span></div>
+          <div class="stat-lbl" data-key="about_stat2">Happy Clients</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">6</div>
+          <div class="stat-lbl" data-key="about_stat3">AI Agents</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">30<span class="plus">+</span></div>
+          <div class="stat-lbl" data-key="about_stat4">Countries Served</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ BRAIN VISUALIZATION ═══════ -->
+<div class="brain-section" aria-hidden="true">
+  <div class="container">
+    <div class="text-center section-header reveal">
+      <span class="section-label"><i class="fa-solid fa-circle-nodes"></i> <span data-key="brain_label">Master Brain System</span></span>
+      <h2 data-key="brain_title">All Agents. One Mind.</h2>
+      <p style="max-width:480px;margin:16px auto 0;" data-key="brain_sub">A unified neural network orchestrates all 6 agents, sharing insights and optimizing decisions in real-time.</p>
+    </div>
+    <div class="brain-wrap reveal">
+      <canvas id="brain-canvas"></canvas>
+      <div class="brain-label">
+        <div class="brain-label-title" data-key="brain_center">Master Brain</div>
+        <div class="brain-label-sub" data-key="brain_center_sub">Real-time coordination</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ AGENTS (PRODUCTS) ═══════ -->
+<section id="agents" class="section">
+  <div class="container">
+    <div class="section-header text-center reveal">
+      <span class="section-label"><i class="fa-solid fa-robot"></i> <span data-key="agents_label">Our AI Agents</span></span>
+      <h2 data-key="agents_title">6 Agents. Infinite Possibilities.</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="agents-grid" id="agents-grid"></div>
+  </div>
+</section>
+
+<!-- ═══════ FEATURES ═══════ -->
+<section id="features" class="section">
+  <div class="container">
+    <div class="section-header text-center reveal">
+      <span class="section-label"><i class="fa-solid fa-star"></i> <span data-key="features_label">Key Features</span></span>
+      <h2 data-key="features_title">Built for Scale. Designed for Results.</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="features-grid" id="features-grid"></div>
+  </div>
+</section>
+
+<!-- ═══════ INTEGRATION ═══════ -->
+<section id="integration" class="section">
+  <div class="container">
+    <div class="integration-grid">
+      <div class="reveal">
+        <span class="section-label"><i class="fa-solid fa-plug"></i> <span data-key="int_label">Integrations</span></span>
+        <h2 data-key="int_title">Connect Your Entire Stack</h2>
+        <p style="margin:20px 0 0;" data-key="int_subtitle">Market Flow connects to the tools you already love, creating a seamless workflow from automation to reporting.</p>
+        <ul class="int-list" style="margin-top:28px;" id="int-list"></ul>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="int-logo-pair">
+          <div class="int-logo">
+            <i class="fa-solid fa-network-wired" style="font-size:1.8rem;color:var(--gold);"></i>
+            <span>n8n</span>
+            <span style="font-size:0.72rem;color:var(--text-muted);" data-key="int_n8n_sub">Workflow Automation</span>
+          </div>
+          <div class="int-connector">⟷</div>
+          <div class="int-logo" style="animation-delay:-1.5s;">
+            <i class="fa-solid fa-database" style="font-size:1.8rem;color:#3B82F6;"></i>
+            <span>ERPNext</span>
+            <span style="font-size:0.72rem;color:var(--text-muted);" data-key="int_erp_sub">Business Management</span>
+          </div>
+        </div>
+        <div class="card card-sm" style="text-align:center;">
+          <div class="badge badge-green" style="margin-bottom:12px;"><i class="fa-solid fa-circle" style="font-size:0.5rem;"></i> <span data-key="int_live">Live Connection</span></div>
+          <p style="font-size:0.85rem;" data-key="int_desc">Data flows bidirectionally between all systems in under 100ms latency.</p>
+          <div style="margin-top:16px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+            <span class="badge badge-gold">REST API</span>
+            <span class="badge badge-blue">Webhooks</span>
+            <span class="badge badge-green">Real-time</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CONTACT ═══════ -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-header text-center reveal">
+      <span class="section-label"><i class="fa-solid fa-headset"></i> <span data-key="contact_label">Contact Us</span></span>
+      <h2 data-key="contact_title">Let's Build Something Great</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fa-brands fa-whatsapp"></i></div>
+          <div>
+            <div class="contact-item-label" data-key="contact_phone_label">WhatsApp / Phone</div>
+            <div class="contact-item-val"><a href="tel:+201113903070">+20 111 390 3070</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div>
+            <div class="contact-item-label" data-key="contact_email_label">Email</div>
+            <div class="contact-item-val"><a href="mailto:moh222salah@gmail.com">moh222salah@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fa-solid fa-clock"></i></div>
+          <div>
+            <div class="contact-item-label" data-key="contact_hours_label">Working Hours</div>
+            <div class="contact-item-val" data-key="contact_hours_val">Sun – Thu · 9:00 AM – 6:00 PM</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fa-solid fa-globe"></i></div>
+          <div>
+            <div class="contact-item-label" data-key="contact_service_label">Service Area</div>
+            <div class="contact-item-val" data-key="contact_service_val">Global · Remote-first operations</div>
+          </div>
+        </div>
+        <a class="btn btn-wa btn-lg" href="https://wa.me/+201113903070?text=Hello%2C%20I'm%20interested%20in%20Market%20Flow" target="_blank" rel="noopener" style="margin-top:8px;">
+          <i class="fa-brands fa-whatsapp"></i> <span data-key="contact_wa_btn">Chat on WhatsApp</span>
+        </a>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="map-placeholder">
+          <i class="fa-solid fa-location-dot"></i>
+          <p data-key="map_label">Global Remote Headquarters</p>
+          <span class="badge badge-gold">Market Flow</span>
+          <div style="position:absolute;inset:0;overflow:hidden;border-radius:var(--radius-lg);opacity:0.3;" aria-hidden="true">
+            <svg width="100%" height="100%" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+                  <path d="M 30 0 L 0 0 0 30" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#grid)" />
+              <circle cx="200" cy="150" r="8" fill="var(--gold)" opacity="0.8"/>
+              <circle cx="200" cy="150" r="20" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.4"/>
+              <circle cx="200" cy="150" r="40" fill="none" stroke="var(--gold)" stroke-width="0.5" opacity="0.2"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo-small">
+          <div class="logo-icon" style="background:var(--gold);color:#000;"><i class="fa-solid fa-chart-line"></i></div>
+          Market<span>Flow</span>
+        </div>
+        <p data-key="footer_desc">AI-powered marketing automation. 6 intelligent agents. One unified platform. Unlimited growth.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://wa.me/+201113903070" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5 data-key="footer_platform">Platform</h5>
+        <ul class="footer-links">
+          <li><a href="#" onclick="scrollTo('agents')" data-key="footer_agents">AI Agents</a></li>
+          <li><a href="#" onclick="scrollTo('features')" data-key="footer_features">Features</a></li>
+          <li><a href="#" onclick="scrollTo('integration')" data-key="footer_int">Integration</a></li>
+          <li><a href="#" data-key="footer_pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5 data-key="footer_company">Company</h5>
+        <ul class="footer-links">
+          <li><a href="#" onclick="scrollTo('about')" data-key="footer_about">About</a></li>
+          <li><a href="#" data-key="footer_blog">Blog</a></li>
+          <li><a href="#" data-key="footer_careers">Careers</a></li>
+          <li><a href="#" onclick="scrollTo('contact')" data-key="footer_contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5 data-key="footer_legal">Legal</h5>
+        <ul class="footer-links">
+          <li><a href="#" data-key="footer_privacy">Privacy Policy</a></li>
+          <li><a href="#" data-key="footer_terms">Terms of Service</a></li>
+          <li><a href="#" data-key="footer_gdpr">GDPR</a></li>
+          <li><a href="#" data-key="footer_security">Security</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-key="footer_copyright">© 2025 Market Flow. All rights reserved.</span>
+      <span data-key="footer_made">Built with ❤️ · No frameworks · Just clean code.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float (desktop) -->
+<a id="wa-float" href="https://wa.me/+201113903070?text=Hello%2C%20I'm%20interested%20in%20Market%20Flow" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<!-- Mobile Bottom Nav -->
+<nav id="mobile-nav" role="navigation" aria-label="Mobile navigation">
+  <div class="mob-nav-inner">
+    <button class="mob-nav-item active" onclick="scrollTo('hero')" data-key-mob="mob_home"><i class="fa-solid fa-house"></i><span data-key="mob_home">Home</span></button>
+    <button class="mob-nav-item" onclick="scrollTo('agents')" data-key-mob="mob_agents"><i class="fa-solid fa-robot"></i><span data-key="mob_agents">Agents</span></button>
+    <a class="mob-nav-item wa-nav" href="https://wa.me/+201113903070" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i><span>WhatsApp</span></a>
+    <button class="mob-nav-item" onclick="scrollTo('contact')"><i class="fa-solid fa-envelope"></i><span data-key="mob_contact">Contact</span></button>
+  </div>
+</nav>
+
+<!-- Modal: Agent Detail (Level 1) -->
+<div id="agent-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="agent-modal-title">
+  <div class="modal-box" style="max-width:820px;">
+    <button class="modal-close" onclick="closeModal('agent-modal')" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-header" id="agent-modal-header"></div>
+    <div class="modal-body" id="agent-modal-body"></div>
+  </div>
+</div>
+
+<!-- Modal: Product (Level 2) -->
+<div id="product-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="product-modal-title">
+  <div class="modal-box" style="padding:0;overflow:hidden;">
+    <button class="modal-close" onclick="closeModal('product-modal')" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <div id="product-modal-body"></div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════
+   1. CONFIG
+═══════════════════════════════════════════════ */
+const CONFIG = {
+  BUSINESS_NAME: 'Market Flow',
+  PHONE: '+201113903070',
+  EMAIL: 'moh222salah@gmail.com',
+  LOCATION: 'Global Remote Operations',
+};
+
+/* ═══════════════════════════════════════════════
+   2. STATE
+═══════════════════════════════════════════════ */
+const state = {
+  lang: localStorage.getItem('mf_lang') || (navigator.language.startsWith('ar') ? 'ar' : 'en'),
+  theme: localStorage.getItem('mf_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
+  openModal: null,
+};
+
+/* ═══════════════════════════════════════════════
+   3. TRANSLATIONS
+═══════════════════════════════════════════════ */
+const T = {
+  en: {
+    nav_home: 'Home', nav_agents: 'Agents', nav_features: 'Features',
+    nav_integration: 'Integration', nav_contact: 'Contact',
+    header_cta: 'Explore Agents',
+    hero_label: 'AI-Powered Marketing',
+    hero_title_1: 'Automate Your', hero_title_2: 'Marketing Flow',
+    hero_subtitle: '6 intelligent AI agents working 24/7 to grow your business. Content, SEO, Ads, Analytics — all automated, all connected.',
+    hero_cta1: 'Explore Agents', hero_cta2: 'WhatsApp Us',
+    stat_agents: 'AI Agents', stat_auto: 'Automation Rate',
+    stat_clients: 'Clients Served', stat_support: 'Always Active',
+    about_label: 'About Us',
+    about_title: 'The Intelligence Behind Your Marketing',
+    about_p1: 'Market Flow was born from a simple belief: marketing shouldn\'t require an army of specialists. Our platform deploys 6 specialized AI agents that handle every aspect of your digital marketing — around the clock, without error.',
+    about_p2: 'We integrate seamlessly with your existing tools including ERPNext and n8n, creating a fully automated marketing engine that learns, adapts, and grows with your business.',
+    about_p3: 'Trusted by 500+ businesses across 30+ countries, Market Flow has become the gold standard in AI-powered marketing automation for companies that demand excellence.',
+    about_stat1: 'Years of Innovation', about_stat2: 'Happy Clients',
+    about_stat3: 'AI Agents', about_stat4: 'Countries Served',
+    brain_label: 'Master Brain System', brain_title: 'All Agents. One Mind.',
+    brain_sub: 'A unified neural network orchestrates all 6 agents, sharing insights and optimizing decisions in real-time.',
+    brain_center: 'Master Brain', brain_center_sub: 'Real-time coordination',
+    agents_label: 'Our AI Agents', agents_title: '6 Agents. Infinite Possibilities.',
+    features_label: 'Key Features', features_title: 'Built for Scale. Designed for Results.',
+    int_label: 'Integrations', int_title: 'Connect Your Entire Stack',
+    int_subtitle: 'Market Flow connects to the tools you already love, creating a seamless workflow from automation to reporting.',
+    int_n8n_sub: 'Workflow Automation', int_erp_sub: 'Business Management',
+    int_live: 'Live Connection',
+    int_desc: 'Data flows bidirectionally between all systems in under 100ms latency.',
+    contact_label: 'Contact Us', contact_title: "Let's Build Something Great",
+    contact_phone_label: 'WhatsApp / Phone', contact_email_label: 'Email',
+    contact_hours_label: 'Working Hours', contact_hours_val: 'Sun – Thu · 9:00 AM – 6:00 PM',
+    contact_service_label: 'Service Area', contact_service_val: 'Global · Remote-first operations',
+    contact_wa_btn: 'Chat on WhatsApp',
+    map_label: 'Global Remote Headquarters',
+    footer_desc: 'AI-powered marketing automation. 6 intelligent agents. One unified platform. Unlimited growth.',
+    footer_platform: 'Platform', footer_company: 'Company', footer_legal: 'Legal',
+    footer_agents: 'AI Agents', footer_features: 'Features', footer_int: 'Integration',
+    footer_pricing: 'Pricing', footer_about: 'About', footer_blog: 'Blog',
+    footer_careers: 'Careers', footer_contact: 'Contact',
+    footer_privacy: 'Privacy Policy', footer_terms: 'Terms of Service',
+    footer_gdpr: 'GDPR', footer_security: 'Security',
+    footer_copyright: '© 2025 Market Flow. All rights reserved.',
+    footer_made: 'Built with ❤️ · No frameworks · Just clean code.',
+    mob_home: 'Home', mob_agents: 'Agents', mob_contact: 'Contact',
+    read_more: 'Learn More', wa_btn: 'Contact via WhatsApp',
+    stock_available: 'Available', stock_limited: 'Limited',
+    products_title: 'Services & Plans', close: 'Close',
+  },
+  ar: {
+    nav_home: 'الرئيسية', nav_agents: 'الوكلاء', nav_features: 'المميزات',
+    nav_integration: 'التكامل', nav_contact: 'تواصل',
+    header_cta: 'استكشف الوكلاء',
+    hero_label: 'تسويق مدعوم بالذكاء الاصطناعي',
+    hero_title_1: 'أتمتة تدفق', hero_title_2: 'تسويقك الذكي',
+    hero_subtitle: '6 وكلاء ذكاء اصطناعي يعملون على مدار الساعة لتنمية أعمالك. المحتوى، SEO، الإعلانات، التحليلات — كلها مؤتمتة ومترابطة.',
+    hero_cta1: 'استكشف الوكلاء', hero_cta2: 'تواصل عبر واتساب',
+    stat_agents: 'وكيل ذكي', stat_auto: 'نسبة الأتمتة',
+    stat_clients: 'عميل راضٍ', stat_support: 'نشط دائماً',
+    about_label: 'من نحن',
+    about_title: 'الذكاء الذي يقود تسويقك',
+    about_p1: 'وُلد Market Flow من إيمان بسيط: لا يحتاج التسويق إلى جيش من المتخصصين. منصتنا تنشر 6 وكلاء ذكاء اصطناعي متخصصين يتعاملون مع كل جانب من جوانب تسويقك الرقمي — على مدار الساعة وبدون أخطاء.',
+    about_p2: 'نتكامل بسلاسة مع أدواتك الحالية بما فيها ERPNext وn8n، لإنشاء محرك تسويقي مؤتمت بالكامل يتعلم ويتكيف وينمو مع أعمالك.',
+    about_p3: 'يثق بنا أكثر من 500 شركة في أكثر من 30 دولة. أصبح Market Flow المعيار الذهبي في أتمتة التسويق بالذكاء الاصطناعي للشركات التي تطالب بالتميز.',
+    about_stat1: 'سنوات من الابتكار', about_stat2: 'عميل سعيد',
+    about_stat3: 'وكيل ذكي', about_stat4: 'دولة نخدمها',
+    brain_label: 'نظام العقل المحوري', brain_title: 'جميع الوكلاء. عقل واحد.',
+    brain_sub: 'شبكة عصبية موحدة تنسق بين 6 وكلاء، تتشارك الرؤى وتحسين القرارات في الوقت الفعلي.',
+    brain_center: 'العقل المحوري', brain_center_sub: 'تنسيق لحظي',
+    agents_label: 'وكلاؤنا الذكيون', agents_title: '6 وكلاء. إمكانيات لا نهائية.',
+    features_label: 'المميزات الرئيسية', features_title: 'مبني للتوسع. مصمم للنتائج.',
+    int_label: 'التكاملات', int_title: 'ربط منظومتك بالكامل',
+    int_subtitle: 'يتصل Market Flow بالأدوات التي تحبها بالفعل، مما يخلق سير عمل سلساً من الأتمتة إلى إعداد التقارير.',
+    int_n8n_sub: 'أتمتة سير العمل', int_erp_sub: 'إدارة الأعمال',
+    int_live: 'اتصال مباشر',
+    int_desc: 'تتدفق البيانات بشكل ثنائي الاتجاه بين جميع الأنظمة في أقل من 100 ميلي ثانية.',
+    contact_label: 'تواصل معنا', contact_title: 'لنبني شيئاً عظيماً',
+    contact_phone_label: 'واتساب / هاتف', contact_email_label: 'البريد الإلكتروني',
+    contact_hours_label: 'ساعات العمل', contact_hours_val: 'الأحد – الخميس · 9:00 ص – 6:00 م',
+    contact_service_label: 'نطاق الخدمة', contact_service_val: 'عالمي · عمليات عن بُعد',
+    contact_wa_btn: 'تواصل عبر واتساب',
+    map_label: 'مقر عالمي للعمل عن بُعد',
+    footer_desc: 'أتمتة تسويقية بالذكاء الاصطناعي. 6 وكلاء أذكياء. منصة موحدة واحدة. نمو لا محدود.',
+    footer_platform: 'المنصة', footer_company: 'الشركة', footer_legal: 'القانوني',
+    footer_agents: 'الوكلاء الذكيون', footer_features: 'المميزات', footer_int: 'التكامل',
+    footer_pricing: 'الأسعار', footer_about: 'من نحن', footer_blog: 'المدونة',
+    footer_careers: 'الوظائف', footer_contact: 'تواصل',
+    footer_privacy: 'سياسة الخصوصية', footer_terms: 'شروط الخدمة',
+    footer_gdpr: 'GDPR', footer_security: 'الأمان',
+    footer_copyright: '© 2025 Market Flow. جميع الحقوق محفوظة.',
+    footer_made: 'صُنع بـ ❤️ · بدون مكتبات · كود نظيف فقط.',
+    mob_home: 'الرئيسية', mob_agents: 'الوكلاء', mob_contact: 'تواصل',
+    read_more: 'اعرف أكثر', wa_btn: 'تواصل عبر واتساب',
+    stock_available: 'متاح', stock_limited: 'محدود',
+    products_title: 'الخدمات والباقات', close: 'إغلاق',
+  }
+};
+
+/* ═══════════════════════════════════════════════
+   4. AGENTS DATA
+═══════════════════════════════════════════════ */
+const AGENTS = [
+  {
+    key: 'content', icon: 'fa-pen-nib', colorClass: 'agent-c1',
+    en: { name: 'AI Content Agent', desc: 'Creates high-converting blog posts, social media captions, email campaigns, and ad copy — all tailored to your brand voice and target audience.' },
+    ar: { name: 'وكيل المحتوى الذكي', desc: 'يُنشئ مقالات احترافية، تعليقات سوشيال ميديا، حملات بريد إلكتروني، ونصوص إعلانية — كلها مصممة لهوية علامتك التجارية وجمهورك المستهدف.' },
+    plans: [
+      { en: { name: 'Content Starter', desc: 'Up to 30 pieces/month. Blog posts, social captions, email sequences.' }, ar: { name: 'باقة المحتوى الأساسية', desc: 'حتى 30 قطعة شهرياً. مقالات، تعليقات، تسلسلات بريد.' }, price: '$99/mo', img: 'photo-1499750310107-5fef28a66643' },
+      { en: { name: 'Content Pro', desc: 'Unlimited content. SEO optimization, multi-language support, brand voice training.' }, ar: { name: 'باقة المحتوى الاحترافية', desc: 'محتوى غير محدود. تحسين SEO، دعم متعدد اللغات، تدريب على صوت العلامة.' }, price: '$249/mo', img: 'photo-1455390582262-044cdead277a' },
+      { en: { name: 'Content Enterprise', desc: 'Custom solutions. Dedicated AI model trained on your brand. Priority support.' }, ar: { name: 'باقة المحتوى المؤسسية', desc: 'حلول مخصصة. نموذج ذكاء اصطناعي مخصص لعلامتك. دعم أولوية.' }, price: 'Custom', img: 'photo-1542435503-956c469947f6' },
+    ],
+    modal_en: { title: 'AI Content Agent', subtitle: 'Write smarter. Publish faster. Engage deeper.', features: ['GPT-4 powered generation','Brand voice training','Multi-language (AR/EN)','SEO-optimized output','30+ content templates','Bulk generation mode'] },
+    modal_ar: { title: 'وكيل المحتوى الذكي', subtitle: 'اكتب بذكاء. انشر بسرعة. تفاعل بعمق.', features: ['توليد مدعوم بـ GPT-4','تدريب على صوت العلامة التجارية','متعدد اللغات (عربي/إنجليزي)','مخرجات محسّنة لـ SEO','أكثر من 30 قالب محتوى','وضع التوليد المجمّع'] },
+  },
+  {
+    key: 'analysis', icon: 'fa-magnifying-glass-chart', colorClass: 'agent-c2',
+    en: { name: 'Website Analysis Agent', desc: 'Deep-scans your website for performance issues, UX gaps, conversion blockers, and technical errors. Delivers actionable fix reports instantly.' },
+    ar: { name: 'وكيل تحليل المواقع', desc: 'يفحص موقعك بعمق بحثاً عن مشكلات الأداء، فجوات UX، عوائق التحويل، والأخطاء التقنية. يقدم تقارير إصلاح قابلة للتنفيذ فوراً.' },
+    plans: [
+      { en: { name: 'Basic Scan', desc: 'Monthly website audit. Performance, SEO, and UX scoring.' }, ar: { name: 'الفحص الأساسي', desc: 'تدقيق شهري للموقع. أداء، SEO، وتقييم UX.' }, price: '$49/mo', img: 'photo-1551288049-bebda4e38f71' },
+      { en: { name: 'Pro Analysis', desc: 'Weekly scans + competitor comparison + conversion optimization report.' }, ar: { name: 'التحليل الاحترافي', desc: 'فحص أسبوعي + مقارنة المنافسين + تقرير تحسين التحويل.' }, price: '$149/mo', img: 'photo-1460925895917-afdab827c52f' },
+      { en: { name: 'Continuous Monitor', desc: 'Real-time monitoring. Instant alerts. Auto-fix suggestions.' }, ar: { name: 'المراقبة المستمرة', desc: 'مراقبة فورية. تنبيهات لحظية. اقتراحات إصلاح تلقائية.' }, price: '$299/mo', img: 'photo-1518186285589-2f7649de83e0' },
+    ],
+    modal_en: { title: 'Website Analysis Agent', subtitle: 'Diagnose. Optimize. Convert.', features: ['Full technical audit','Core Web Vitals tracking','Competitor benchmarking','Heatmap analysis','Conversion funnel mapping','Auto-generated fix reports'] },
+    modal_ar: { title: 'وكيل تحليل المواقع', subtitle: 'شخّص. حسّن. حوّل.', features: ['تدقيق تقني شامل','تتبع Core Web Vitals','قياس الأداء مقابل المنافسين','تحليل خريطة الحرارة','رسم خريطة مسار التحويل','تقارير إصلاح آلية'] },
+  },
+  {
+    key: 'social', icon: 'fa-comments', colorClass: 'agent-c3',
+    en: { name: 'Social Moderation Agent', desc: 'Monitors all your social channels 24/7. Auto-responds to comments, filters toxic content, tracks brand mentions, and manages community engagement.' },
+    ar: { name: 'وكيل إدارة السوشيال', desc: 'يراقب جميع قنواتك الاجتماعية على مدار الساعة. يرد تلقائياً على التعليقات، يصفّي المحتوى السام، يتتبع إشارات العلامة التجارية، ويدير تفاعل المجتمع.' },
+    plans: [
+      { en: { name: 'Community Guard', desc: '2 channels. Auto-moderation + sentiment tracking.' }, ar: { name: 'حارس المجتمع', desc: 'قناتان. إشراف تلقائي + تتبع المشاعر.' }, price: '$79/mo', img: 'photo-1611162617213-7d7a39e9b1d7' },
+      { en: { name: 'Social Pro', desc: '5 channels. Auto-replies, brand mentions, crisis detection.' }, ar: { name: 'السوشيال الاحترافي', desc: '5 قنوات. ردود تلقائية، إشارات العلامة، كشف الأزمات.' }, price: '$199/mo', img: 'photo-1611162616305-c69b3037c7bb' },
+      { en: { name: 'Omnichannel', desc: 'Unlimited channels. Full automation + human escalation workflows.' }, ar: { name: 'متعدد القنوات', desc: 'قنوات غير محدودة. أتمتة كاملة + مسارات التصعيد البشري.' }, price: '$449/mo', img: 'photo-1432888498266-38ffec3eaf0a' },
+    ],
+    modal_en: { title: 'Social Moderation Agent', subtitle: 'Manage every conversation. At scale.', features: ['24/7 comment monitoring','Sentiment analysis','Auto-reply with AI','Toxic content filtering','Brand mention tracking','Crisis alert system'] },
+    modal_ar: { title: 'وكيل إدارة السوشيال', subtitle: 'أدر كل محادثة. على أي نطاق.', features: ['مراقبة تعليقات 24/7','تحليل المشاعر','ردود تلقائية بالذكاء الاصطناعي','تصفية المحتوى السام','تتبع إشارات العلامة','نظام تنبيه الأزمات'] },
+  },
+  {
+    key: 'seo', icon: 'fa-chart-bar', colorClass: 'agent-c4',
+    en: { name: 'SEO Research Agent', desc: 'Discovers high-intent keywords, analyzes your competition, tracks rankings, and generates optimized content briefs that dominate search results.' },
+    ar: { name: 'وكيل أبحاث SEO', desc: 'يكتشف الكلمات المفتاحية ذات النية العالية، يحلل منافسيك، يتتبع الترتيبات، ويولد ملخصات محتوى محسّنة تهيمن على نتائج البحث.' },
+    plans: [
+      { en: { name: 'SEO Starter', desc: 'Monthly keyword research. Up to 100 target keywords.' }, ar: { name: 'باقة SEO الأساسية', desc: 'بحث كلمات مفتاحية شهري. حتى 100 كلمة مستهدفة.' }, price: '$89/mo', img: 'photo-1562577309-4932fdd64cd1' },
+      { en: { name: 'SEO Growth', desc: 'Weekly reports. Unlimited keywords + competitor gap analysis.' }, ar: { name: 'نمو SEO', desc: 'تقارير أسبوعية. كلمات مفتاحية غير محدودة + تحليل فجوات المنافسين.' }, price: '$229/mo', img: 'photo-1504868584819-f8e8b4b6d7e3' },
+      { en: { name: 'SEO Domination', desc: 'Daily tracking. Auto-content generation for top-10 opportunities.' }, ar: { name: 'هيمنة SEO', desc: 'تتبع يومي. توليد محتوى تلقائي لأفضل 10 فرص.' }, price: '$499/mo', img: 'photo-1460925895917-afdab827c52f' },
+    ],
+    modal_en: { title: 'SEO Research Agent', subtitle: 'Rank higher. Stay there. Keep growing.', features: ['Keyword opportunity discovery','Competitor gap analysis','Daily rank tracking','Content brief generation','Backlink monitoring','Technical SEO audit'] },
+    modal_ar: { title: 'وكيل أبحاث SEO', subtitle: 'تصدّر النتائج. حافظ على مكانك. استمر في النمو.', features: ['اكتشاف فرص الكلمات المفتاحية','تحليل فجوات المنافسين','تتبع الترتيب اليومي','توليد ملخصات المحتوى','مراقبة الروابط الخلفية','تدقيق SEO التقني'] },
+  },
+  {
+    key: 'media', icon: 'fa-bullhorn', colorClass: 'agent-c5',
+    en: { name: 'Media Buying Agent', desc: 'Manages and optimizes your paid ad campaigns across Google, Meta, TikTok, and more. Maximizes ROAS through AI-driven bidding and creative testing.' },
+    ar: { name: 'وكيل شراء الميديا', desc: 'يدير ويحسّن حملاتك الإعلانية المدفوعة عبر Google وMeta وTikTok وغيرها. يعظّم عائد الإنفاق الإعلاني من خلال العطاءات المدفوعة بالذكاء الاصطناعي واختبار الإبداعات.' },
+    plans: [
+      { en: { name: 'Ad Starter', desc: 'Up to $5K ad spend managed. 2 platforms.' }, ar: { name: 'باقة الإعلانات الأساسية', desc: 'إدارة حتى 5000 دولار إنفاق إعلاني. منصتان.' }, price: '$199/mo', img: 'photo-1563986768609-322da13575f3' },
+      { en: { name: 'Ad Scale', desc: 'Up to $50K ad spend. 5 platforms + creative AI generation.' }, ar: { name: 'باقة التوسع الإعلاني', desc: 'حتى 50 ألف دولار إنفاق. 5 منصات + توليد ذكي للإبداعات.' }, price: '$599/mo', img: 'photo-1611162618071-b39a2ec055fb' },
+      { en: { name: 'Ad Enterprise', desc: 'Unlimited budget management. All platforms. White-glove service.' }, ar: { name: 'باقة الإعلانات المؤسسية', desc: 'إدارة ميزانية غير محدودة. جميع المنصات. خدمة بيضاء.' }, price: 'Custom', img: 'photo-1551288049-bebda4e38f71' },
+    ],
+    modal_en: { title: 'Media Buying Agent', subtitle: 'Every dollar works harder with AI.', features: ['Cross-platform campaign management','AI bid optimization','A/B creative testing','Audience targeting AI','Real-time budget allocation','ROAS maximization'] },
+    modal_ar: { title: 'وكيل شراء الميديا', subtitle: 'كل دولار يعمل بجد أكبر مع الذكاء الاصطناعي.', features: ['إدارة حملات متعددة المنصات','تحسين العطاءات بالذكاء الاصطناعي','اختبار A/B للإبداعات','استهداف الجمهور بالذكاء الاصطناعي','تخصيص الميزانية في الوقت الفعلي','تعظيم عائد الإنفاق الإعلاني'] },
+  },
+  {
+    key: 'reporting', icon: 'fa-chart-pie', colorClass: 'agent-c6',
+    en: { name: 'Reporting Agent', desc: 'Aggregates data from all your marketing channels into beautiful, actionable dashboards. Sends automated weekly reports to stakeholders with AI insights.' },
+    ar: { name: 'وكيل التقارير والتحليلات', desc: 'يجمع البيانات من جميع قنواتك التسويقية في لوحات معلومات جميلة وقابلة للتنفيذ. يرسل تقارير أسبوعية مؤتمتة للمعنيين مع رؤى الذكاء الاصطناعي.' },
+    plans: [
+      { en: { name: 'Report Basic', desc: 'Monthly reports. 3 data sources. PDF delivery.' }, ar: { name: 'التقارير الأساسية', desc: 'تقارير شهرية. 3 مصادر بيانات. تسليم PDF.' }, price: '$69/mo', img: 'photo-1551288049-bebda4e38f71' },
+      { en: { name: 'Report Pro', desc: 'Weekly reports. Unlimited sources. Live dashboard + email delivery.' }, ar: { name: 'التقارير الاحترافية', desc: 'تقارير أسبوعية. مصادر غير محدودة. لوحة معلومات حية + بريد إلكتروني.' }, price: '$179/mo', img: 'photo-1460925895917-afdab827c52f' },
+      { en: { name: 'Report Enterprise', desc: 'Real-time dashboards. Custom KPIs. White-label reports for clients.' }, ar: { name: 'تقارير المؤسسة', desc: 'لوحات معلومات فورية. مؤشرات KPI مخصصة. تقارير بعلامة بيضاء للعملاء.' }, price: '$349/mo', img: 'photo-1504868584819-f8e8b4b6d7e3' },
+    ],
+    modal_en: { title: 'Reporting Agent', subtitle: 'Data clarity. Decision velocity.', features: ['Unified marketing dashboard','Custom KPI tracking','Automated weekly reports','AI-generated insights','Multi-client management','White-label reporting'] },
+    modal_ar: { title: 'وكيل التقارير والتحليلات', subtitle: 'وضوح البيانات. سرعة القرار.', features: ['لوحة تسويقية موحدة','تتبع KPI مخصص','تقارير أسبوعية مؤتمتة','رؤى مولّدة بالذكاء الاصطناعي','إدارة متعدد العملاء','تقارير بعلامة بيضاء'] },
+  },
+];
+
+const FEATURES_DATA = [
+  { icon: 'fa-brain', en: { title: 'Agent Thinking Logic', desc: 'Each agent uses advanced chain-of-thought reasoning to make nuanced decisions tailored to your business context and goals.' }, ar: { title: 'منطق تفكير الوكيل', desc: 'يستخدم كل وكيل استدلالاً متسلسل الأفكار لاتخاذ قرارات دقيقة مصممة لسياق أعمالك وأهدافك.' } },
+  { icon: 'fa-gears', en: { title: 'Full Automation', desc: 'Set it and forget it. All 6 agents run autonomously, executing campaigns, generating reports, and optimizing in real-time without human intervention.' }, ar: { title: 'أتمتة كاملة', desc: 'اضبطه وانسَه. جميع الوكلاء الستة يعملون باستقلالية، ينفذون الحملات، يولدون التقارير، ويحسّنون بشكل فوري دون تدخل بشري.' } },
+  { icon: 'fa-shield-halved', en: { title: 'Secure Environment', desc: 'Enterprise-grade security with end-to-end encryption, GDPR compliance, and isolated data environments for each client account.' }, ar: { title: 'بيئة آمنة', desc: 'أمان على مستوى المؤسسات مع تشفير شامل، امتثال GDPR، وبيئات بيانات معزولة لكل حساب عميل.' } },
+  { icon: 'fa-database', en: { title: 'ERPNext Integration', desc: 'Bidirectional sync with ERPNext keeps your marketing data aligned with your business operations, inventory, and customer records.' }, ar: { title: 'تكامل ERPNext', desc: 'المزامنة ثنائية الاتجاه مع ERPNext تبقي بيانات تسويقك متوافقة مع عمليات أعمالك ومخزونك وسجلات عملائك.' } },
+  { icon: 'fa-handshake', en: { title: 'Client Onboarding', desc: 'White-glove onboarding experience with dedicated setup wizards, migration support, and a 30-day success guarantee.' }, ar: { title: 'تأهيل العملاء', desc: 'تجربة تأهيل احترافية مع معالجات إعداد مخصصة، دعم الترحيل، وضمان نجاح لمدة 30 يوماً.' } },
+  { icon: 'fa-puzzle-piece', en: { title: 'Base Agent Template', desc: 'Build custom agents tailored to your unique business needs using our open agent framework — no coding required.' }, ar: { title: 'قالب الوكيل الأساسي', desc: 'ابنِ وكلاء مخصصين مصممين لاحتياجات أعمالك الفريدة باستخدام إطار عمل الوكيل المفتوح — دون الحاجة إلى ترميز.' } },
+];
+
+const INT_LIST_DATA = [
+  { en: 'n8n workflow automation', ar: 'أتمتة سير العمل بـ n8n', icon: 'fa-network-wired' },
+  { en: 'ERPNext bidirectional sync', ar: 'مزامنة ثنائية مع ERPNext', icon: 'fa-database' },
+  { en: 'Google Ads & Analytics', ar: 'Google Ads وAnalytics', icon: 'fa-chart-bar' },
+  { en: 'Meta Business Suite', ar: 'Meta Business Suite', icon: 'fa-square-facebook' },
+  { en: 'TikTok for Business', ar: 'TikTok للأعمال', icon: 'fa-tiktok' },
+  { en: 'REST API + Webhooks', ar: 'REST API + Webhooks', icon: 'fa-code' },
+];
+
+/* ═══════════════════════════════════════════════
+   5. THEME SYSTEM
+═══════════════════════════════════════════════ */
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  const btn = document.getElementById('theme-btn');
+  btn.innerHTML = theme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+  localStorage.setItem('mf_theme', theme);
+  state.theme = theme;
+}
+function toggleTheme() {
+  applyTheme(state.theme === 'dark' ? 'light' : 'dark');
+}
+
+/* ═══════════════════════════════════════════════
+   6. LANGUAGE SYSTEM
+═══════════════════════════════════════════════ */
+function applyLang(lang) {
+  const html = document.documentElement;
+  html.setAttribute('lang', lang);
+  html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+  document.body.style.fontFamily = lang === 'ar' ? "'Cairo', sans-serif" : "'Outfit', sans-serif";
+  const btn = document.getElementById('lang-btn');
+  btn.textContent = lang === 'ar' ? 'EN' : 'AR';
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.getAttribute('data-key');
+    if (T[lang][key]) el.textContent = T[lang][key];
+  });
+  localStorage.setItem('mf_lang', lang);
+  state.lang = lang;
+  renderAgents();
+  renderFeatures();
+  renderIntList();
+}
+function toggleLang() {
+  applyLang(state.lang === 'ar' ? 'en' : 'ar');
+}
+function t(key) { return T[state.lang][key] || T.en[key] || key; }
+
+/* ═══════════════════════════════════════════════
+   7. RENDER FUNCTIONS
+═══════════════════════════════════════════════ */
+function renderAgents() {
+  const grid = document.getElementById('agents-grid');
+  if (!grid) return;
+  grid.innerHTML = AGENTS.map((agent, i) => {
+    const d = agent[state.lang];
+    return `<div class="agent-card ${agent.colorClass} reveal" style="animation-delay:${i * 0.08}s" onclick="openAgentModal(${i})" tabindex="0" role="button" aria-label="${d.name}">
+      <div class="agent-icon-wrap"><i class="fa-solid ${agent.icon}"></i></div>
+      <h3>${d.name}</h3>
+      <p>${d.desc}</p>
+      <div class="agent-count">${agent.plans.length} ${state.lang==='ar'?'باقات':'plans'}</div>
+      <div class="agent-arrow">${t('read_more')} <span class="arr">→</span></div>
+    </div>`;
+  }).join('');
+  observeReveal();
+}
+
+function renderFeatures() {
+  const grid = document.getElementById('features-grid');
+  if (!grid) return;
+  grid.innerHTML = FEATURES_DATA.map((f, i) => {
+    const d = f[state.lang];
+    return `<div class="feature-card reveal reveal-delay-${(i%3)+1}">
+      <div class="feature-icon"><i class="fa-solid ${f.icon}"></i></div>
+      <h4>${d.title}</h4>
+      <p>${d.desc}</p>
+    </div>`;
+  }).join('');
+  observeReveal();
+}
+
+function renderIntList() {
+  const list = document.getElementById('int-list');
+  if (!list) return;
+  list.innerHTML = INT_LIST_DATA.map(item => `<li><i class="fa-solid ${item.icon}"></i>${item[state.lang]}</li>`).join('');
+}
+
+/* ═══════════════════════════════════════════════
+   8. MODAL LOGIC
+═══════════════════════════════════════════════ */
+function openAgentModal(agentIndex) {
+  const agent = AGENTS[agentIndex];
+  const d = agent[state.lang];
+  const modal_d = agent[`modal_${state.lang}`];
+
+  // Header
+  const header = document.getElementById('agent-modal-header');
+  header.innerHTML = `
+    <div class="modal-icon-lg ${agent.colorClass}" style="width:64px;height:64px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;">
+      <i class="fa-solid ${agent.icon}"></i>
+    </div>
+    <div>
+      <h2 id="agent-modal-title" style="font-size:1.5rem;margin-bottom:6px;">${modal_d.title}</h2>
+      <p style="font-size:0.9rem;margin:0;">${modal_d.subtitle}</p>
+    </div>
+  `;
+
+  // Body: features + plans grid
+  const body = document.getElementById('agent-modal-body');
+  const featureHTML = modal_d.features.map(f => `<span class="badge badge-gold" style="margin:3px;"><i class="fa-solid fa-check" style="font-size:0.65rem;"></i> ${f}</span>`).join('');
+  const plansHTML = agent.plans.map((plan, pi) => {
+    const pd = plan[state.lang];
+    return `<div class="cat-product-card" onclick="openProductModal(${agentIndex}, ${pi})" tabindex="0" role="button">
+      <img class="cat-product-img" src="https://images.unsplash.com/${plan.img}?w=400&h=250&auto=format&fit=crop" loading="lazy" alt="${pd.name}" onerror="this.style.background='var(--border)'">
+      <div class="cat-product-info">
+        <div class="cat-product-name">${pd.name}</div>
+        <div class="cat-product-price">${plan.price}</div>
+        <p style="font-size:0.8rem;margin-top:6px;color:var(--text-muted);">${pd.desc}</p>
+      </div>
+    </div>`;
+  }).join('');
+
+  body.innerHTML = `
+    <div style="margin-bottom:20px;">
+      <h4 style="font-size:0.82rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;">${state.lang==='ar'?'المميزات':'Capabilities'}</h4>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;">${featureHTML}</div>
+    </div>
+    <h4 style="font-size:0.82rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:16px;">${state.lang==='ar'?'الباقات المتاحة':'Available Plans'}</h4>
+    <div class="cat-modal-grid">${plansHTML}</div>
+    <a class="btn btn-wa" style="width:100%;margin-top:24px;justify-content:center;"
+      href="https://wa.me/${CONFIG.PHONE}?text=${encodeURIComponent(state.lang==='ar'?`مرحباً، أود الاستفسار عن ${modal_d.title}`:`Hello, I'm interested in ${modal_d.title}`)}"
+      target="_blank" rel="noopener">
+      <i class="fa-brands fa-whatsapp"></i> ${t('wa_btn')}
+    </a>
+  `;
+
+  openModal('agent-modal');
+}
+
+function openProductModal(agentIndex, planIndex) {
+  const agent = AGENTS[agentIndex];
+  const plan = agent.plans[planIndex];
+  const pd = plan[state.lang];
+  const modal_d = agent[`modal_${state.lang}`];
+  const isInStock = Math.random() > 0.1;
+
+  const body = document.getElementById('product-modal-body');
+  body.innerHTML = `
+    <div class="product-detail">
+      <div class="product-img-side">
+        <img src="https://images.unsplash.com/${plan.img}?w=600&h=700&auto=format&fit=crop" loading="lazy" alt="${pd.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.background='var(--border)'">
+        <div style="position:absolute;top:16px;left:16px;display:flex;gap:8px;flex-wrap:wrap;">
+          <span class="badge ${isInStock?'badge-green':'badge-red'}">${isInStock?t('stock_available'):t('stock_limited')}</span>
+          <span class="badge badge-dark">${agent[state.lang].name}</span>
+        </div>
+      </div>
+      <div class="product-info-side">
+        <div style="margin-bottom:8px;display:flex;gap:8px;flex-wrap:wrap;">
+          <span class="badge badge-gold"><i class="fa-solid ${agent.icon}" style="font-size:0.65rem;"></i> ${modal_d.title}</span>
+        </div>
+        <h2 id="product-modal-title" style="font-size:1.6rem;margin-bottom:0;">${pd.name}</h2>
+        <div class="product-price">${plan.price}<small> ${state.lang==='ar'?'/ شهر':''}</small></div>
+        <p style="font-size:0.92rem;margin-bottom:20px;">${pd.desc}</p>
+        <div class="product-specs">
+          ${modal_d.features.slice(0,4).map(f=>`<div class="product-spec"><span class="product-spec-key"><i class="fa-solid fa-check" style="color:var(--gold);margin-inline-end:8px;"></i>${f}</span></div>`).join('')}
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:24px;">
+          <a class="btn btn-wa btn-lg" style="width:100%;justify-content:center;"
+            href="https://wa.me/${CONFIG.PHONE}?text=${encodeURIComponent(state.lang==='ar'?`مرحباً، أود الاشتراك في ${pd.name} بسعر ${plan.price}`:`Hello, I'd like to subscribe to ${pd.name} at ${plan.price}`)}"
+            target="_blank" rel="noopener">
+            <i class="fa-brands fa-whatsapp"></i> ${t('wa_btn')}
+          </a>
+          <button class="btn btn-ghost" onclick="closeModal('product-modal')">${t('close')}</button>
+        </div>
+      </div>
+    </div>
+  `;
+  openModal('product-modal');
+}
+
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+  state.openModal = id;
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  if (state.openModal === id) {
+    document.body.style.overflow = '';
+    state.openModal = null;
+  }
+}
+
+// Escape key + overlay click
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && state.openModal) closeModal(state.openModal); });
+document.querySelectorAll('.modal-overlay').forEach(el => {
+  el.addEventListener('click', e => { if (e.target === el) closeModal(el.id); });
+});
+
+/* ═══════════════════════════════════════════════
+   9. SCROLL + HEADER + NAV
+═══════════════════════════════════════════════ */
+function scrollTo(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+}
+window.addEventListener('scroll', () => {
+  const header = document.getElementById('header');
+  if (window.scrollY > 20) header.classList.add('scrolled');
+  else header.classList.remove('scrolled');
+
+  // Active nav
+  const sections = ['hero','about','agents','features','integration','contact'];
+  let current = 'hero';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 100) current = id;
+  });
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  const mapping = { hero:'nav_home', about:'about', agents:'nav_agents', features:'nav_features', integration:'nav_integration', contact:'nav_contact' };
+}, { passive: true });
+
+/* ═══════════════════════════════════════════════
+   10. INTERSECTION OBSERVER (REVEAL)
+═══════════════════════════════════════════════ */
+function observeReveal() {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => io.observe(el));
+}
+
+/* ═══════════════════════════════════════════════
+   11. ANIMATED COUNTERS
+═══════════════════════════════════════════════ */
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseInt(el.getAttribute('data-count'));
+    const suffix = el.querySelector('span')?.textContent || '';
+    let current = 0;
+    const step = Math.ceil(target / 40);
+    const timer = setInterval(() => {
+      current = Math.min(current + step, target);
+      const numText = document.createTextNode(current);
+      el.innerHTML = '';
+      el.appendChild(numText);
+      if (suffix) {
+        const s = document.createElement('span');
+        s.textContent = suffix;
+        el.appendChild(s);
+      }
+      if (current >= target) clearInterval(timer);
+    }, 30);
+  });
+}
+const heroIO = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { animateCounters(); heroIO.disconnect(); } });
+}, { threshold: 0.5 });
+heroIO.observe(document.getElementById('hero'));
+
+/* ═══════════════════════════════════════════════
+   12. BRAIN CANVAS
+═══════════════════════════════════════════════ */
+function initBrainCanvas() {
+  const canvas = document.getElementById('brain-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+    canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const centerX = () => canvas.offsetWidth / 2;
+  const centerY = () => canvas.offsetHeight / 2;
+  const radius = () => Math.min(canvas.offsetWidth, canvas.offsetHeight) * 0.35;
+
+  const agentColors = ['#C9A84C','#3B82F6','#10B981','#EF4444','#A855F7','#F97316'];
+  const particles = [];
+
+  AGENTS.forEach((_, i) => {
+    const angle = (i / AGENTS.length) * Math.PI * 2 - Math.PI/2;
+    const x = centerX() + Math.cos(angle) * radius();
+    const y = centerY() + Math.sin(angle) * radius();
+    // Add particles along each line
+    for (let j = 0; j < 3; j++) {
+      particles.push({ agentIndex: i, t: Math.random(), speed: 0.003 + Math.random() * 0.004, dir: Math.random() > 0.5 ? 1 : -1 });
+    }
+  });
+
+  let pulse = 0;
+  function draw() {
+    ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
+    pulse += 0.04;
+    const cx = centerX(), cy = centerY(), r = radius();
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const baseColor = isDark ? '255,255,255' : '0,0,0';
+
+    // Draw lines to agents
+    AGENTS.forEach((_, i) => {
+      const angle = (i / AGENTS.length) * Math.PI * 2 - Math.PI / 2;
+      const ax = cx + Math.cos(angle) * r;
+      const ay = cy + Math.sin(angle) * r;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(ax, ay);
+      ctx.strokeStyle = `rgba(${baseColor},${isDark?0.12:0.07})`;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      // Agent node
+      ctx.beginPath();
+      ctx.arc(ax, ay, 8, 0, Math.PI * 2);
+      ctx.fillStyle = agentColors[i];
+      ctx.globalAlpha = 0.85;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    });
+
+    // Moving particles
+    particles.forEach(p => {
+      p.t += p.speed * p.dir;
+      if (p.t > 1) p.t = 0;
+      if (p.t < 0) p.t = 1;
+      const angle = (p.agentIndex / AGENTS.length) * Math.PI * 2 - Math.PI / 2;
+      const ax = cx + Math.cos(angle) * r;
+      const ay = cy + Math.sin(angle) * r;
+      const px = cx + (ax - cx) * p.t;
+      const py = cy + (ay - cy) * p.t;
+      ctx.beginPath();
+      ctx.arc(px, py, 3, 0, Math.PI * 2);
+      ctx.fillStyle = agentColors[p.agentIndex];
+      ctx.globalAlpha = 0.7;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    });
+
+    // Central pulse
+    const pSize = 16 + Math.sin(pulse) * 4;
+    ctx.beginPath();
+    ctx.arc(cx, cy, pSize, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${baseColor},${isDark?0.15:0.08})`;
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(cx, cy, 10, 0, Math.PI * 2);
+    ctx.fillStyle = isDark ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.85)';
+    ctx.fill();
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+/* ═══════════════════════════════════════════════
+   13. HERO CANVAS (background particles)
+═══════════════════════════════════════════════ */
+function initHeroCanvas() {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+
+  const nodes = Array.from({length: 20}, () => ({
+    x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+    vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4, r: 2 + Math.random() * 3
+  }));
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    nodes.forEach(n => {
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+      if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+      ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0,0,0,0.6)'; ctx.fill();
+    });
+    nodes.forEach((a, i) => nodes.slice(i+1).forEach(b => {
+      const d = Math.hypot(a.x-b.x, a.y-b.y);
+      if (d < 120) {
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+        ctx.strokeStyle = `rgba(0,0,0,${0.3 * (1-d/120)})`; ctx.lineWidth = 0.8; ctx.stroke();
+      }
+    }));
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+/* ═══════════════════════════════════════════════
+   14. INIT
+═══════════════════════════════════════════════ */
+function init() {
+  applyTheme(state.theme);
+  applyLang(state.lang);
+  renderAgents();
+  renderFeatures();
+  renderIntList();
+  observeReveal();
+  initBrainCanvas();
+  initHeroCanvas();
+}
+
+init();
+</script>
+</body>
+</html>
