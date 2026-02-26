@@ -68,25 +68,6 @@ graph TD
     style RA fill:#0D1117,color:#C9A84C,stroke:#C9A84C,stroke-width:1px
 ```
 
-</div>
-
----
-# ⚡ Market Flow
-
-> <span id="typewriter">احترافية لا تُقارن</span>
-
-**AI-Powered Marketing Automation Platform** — 6 Intelligent Agents · Bilingual AR/EN · Single HTML File
-
----
-
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![Lighthouse 90+](https://img.shields.io/badge/Lighthouse-90%2B-00C853?style=flat-square&logo=lighthouse&logoColor=white)
-![WCAG 2.1 AA](https://img.shields.io/badge/WCAG-2.1%20AA-005A9C?style=flat-square)
-![RTL Supported](https://img.shields.io/badge/RTL-Supported-6200EA?style=flat-square)
-![Dark Mode](https://img.shields.io/badge/Dark%20Mode-Auto-111111?style=flat-square)
-![Mobile First](https://img.shields.io/badge/Mobile-First-FF6D00?style=flat-square)
 
 ---
 
